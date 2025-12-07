@@ -6,6 +6,10 @@ from Modes.YouTubeChannelExplorer import launcherChannels
 
 from Modes.YouTubePlaylistExplorer import launcherPlaylists
 
+from Modes.YouTubeSubtitlesExplorer import launcherSubtitles
+
+from Modes.YouTubeOneVideoInfoExplorer import launcherInfo
+
 from Starter.KeyExplorer import youtube_api_key, window_title
 
 from Starter.QuotaExplorer import test_quota
@@ -40,9 +44,8 @@ if __name__ == "__main__":
             while True:
                 os.system('cls')
                 print("=========  v.0.9.0  =========")
-                print("1. Comments\n2. Videos\n3. Channels\n4. Playlists\n0. Exit")
 
-                questionist = input("What do you need to explore?: ") 
+                questionist = input("1. Comments\n2. Videos\n3. Channels\n4. Playlists\n5. Subtitles\n6. Info of one video\n0. Exit\n\nEnter the number: ") 
                 while True:
                     
                     if questionist == '1':
@@ -61,6 +64,14 @@ if __name__ == "__main__":
                         launcherPlaylists(youtube)
                         break
 
+                    elif questionist == "5":
+                        launcherSubtitles(youtube)
+                        break
+
+                    elif questionist == "6":
+                        launcherInfo(youtube)
+                        break
+                    
                     elif questionist == '0':
                         exit(0)
 
