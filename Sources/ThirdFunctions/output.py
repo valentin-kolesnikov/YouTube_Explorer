@@ -7,7 +7,7 @@ def output_channel_info(result, statrequests, get_answers, snistics):
     print(f"Channel: {snistics["title"]}\n"
           f"https://www.youtube.com/channel/{snistics["channelId"]}\n"
           f"CustomUrl: {snistics["customUrl"]}\n"
-          f"Description:\n {snistics["description"]}\n"
+          f"Description:\n=================================\n{snistics["description"]}\n=================================\n"
           f"{snistics["subscriberCount"]} subs; {snistics["videoCount"]} videos; {snistics["viewCount"]} views.\n"
           f"Registration date: {snistics["publishedAt"]}\n")
     

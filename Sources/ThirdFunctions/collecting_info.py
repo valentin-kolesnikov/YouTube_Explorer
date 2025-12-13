@@ -74,7 +74,7 @@ def collect_channel_info(youtube, for_id, for_handle):
         return {}, {}, True
     
     
-def search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension):
+def search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension):  #collect_searches is similar
     try:
         video_collection = youtube.search().list(
             part="snippet",
