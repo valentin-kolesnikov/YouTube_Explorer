@@ -34,8 +34,11 @@ It is designed for:
   - [📈Channel Explorer](#channel-explorer)
   - [🔢Info Explorer](#info-explorer)
 - [⚙️ Functionality](#️-functionality)
-  - [🔧 What do I plan to make in the future?](#-what-do-i-plan-to-make-in-the-future)
-  - [❤️Contributing](#️contributing)
+- [🔧 What do I plan to make in the future?](#-what-do-i-plan-to-make-in-the-future)
+- [🖌️License](#️license)
+- [❤️Contributing](#️contributing)
+  - [🤝How to contribute](#how-to-contribute)
+  - [❓Issues](#issues)
 
 # ❗Requirements  
 
@@ -135,7 +138,7 @@ Enter the video URL, and you will receive the information block from Video Explo
 - **The sorting method** is `by relevance` or `by time`. If you press Enter, `by relevance` will be entered.
 - **Number of comments** — output is limited at the user's request.
 
-## 🔧 What do I plan to make in the future?
+# 🔧 What do I plan to make in the future?
 
 - [ ] The ability to save received comments and videos
 - [x] Explore the channels
@@ -143,6 +146,37 @@ Enter the video URL, and you will receive the information block from Video Explo
 - [ ] Playlist Explorer
 - [ ] Subtitles Explorer
 
-## ❤️Contributing
+# 🖌️License
 
-I will be glad to see your opinions and ideas for new features or improvements. Just open an issue and surprise me!
+YouTubeExplorer is licensed under the Apache-2.0 license.
+
+Versions released before 22-01-2026 were licensed under the MIT License.
+
+Author: Valentin Kolesnikov  
+Original repository: [YouTube_Explorer](https://github.com/valentin-kolesnikov/YouTube_Explorer)
+
+For more details, see the [LICENSE](LICENSE) and [NOTICE](NOTICE) files.
+
+# ❤️Contributing
+
+Thank you for your interest in contributing to this project.
+
+This project is licensed under the `Apache License, Version 2.0`. By submitting a pull request, you agree that your contribution will be licensed under the `Apache License 2.0`.
+
+If you create a fork or derivative work based on this project, please provide clear attribution in your `README`.
+
+A recommended attribution format is:  
+`Original project: YouTube Explorer by Valentin Kolesnikov`
+
+This attribution helps avoid confusion about authorship and is considered good open-source practice.
+
+## 🤝How to contribute
+
+1. Fork the repository.
+2. Create a branch for your change.
+3. Submit a pull request with a clear description.
+4. Make sure your changes are well documented.
+
+## ❓Issues
+
+I will be glad to see your opinions and ideas for new features or improvements. Moreover, please report bugs. Just open an issue and surprise me!
