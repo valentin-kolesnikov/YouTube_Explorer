@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://i.ibb.co/8gsGZ9x9/20250903-0334-remix-01k46ft3hhf4dv826ckv8nnxnx.png" alt="YouTube Explorer">
+   <img src="Image/GeneralYE.png" alt="YouTube Explorer">
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/Code_Editor-VS%20Code-blue" alt="Code Editor VS Code">
