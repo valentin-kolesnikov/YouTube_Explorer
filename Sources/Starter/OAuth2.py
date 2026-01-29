@@ -72,8 +72,7 @@ def youtube_OAuth2():
     
     
     except FileNotFoundError:
-        print("The file client_secret_*.json is not found.")
 
-        input("\nPress Enter...")
+        # the error message won't be displayed in the terminal, remember it
 
         return {}, True
