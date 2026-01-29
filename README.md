@@ -10,7 +10,7 @@
 
 # YouTube Explorer
 
-**YouTube Explorer** is a console-based Python tool for programmatic exploration of YouTube content using **YouTube Data API v3** and **Return YouTube Dislike API**<!-- and **YouTube Transcript API** -->
+**YouTube Explorer** is a console-based Python tool for programmatic exploration of YouTube content using **YouTube Data API v3** (with OAuth 2.0 support), **Return YouTube Dislike API**, and **YouTube Transcript API**
 
 It is designed for:
 
@@ -29,6 +29,7 @@ It is designed for:
 - [Core capabilities](#core-capabilities)
   - [🔑YouTube API key handling](#youtube-api-key-handling)
   - [🚪Quota inspection](#quota-inspection)
+  - [🛡️OAuth 2.0 Integration](#️oauth-20-integration)
   - [💌Comment Explorer](#comment-explorer)
   - [📹Video Explorer](#video-explorer)
   - [📈Channel Explorer](#channel-explorer)
@@ -83,6 +84,12 @@ Basic familiarity with command-line usage is recommended.
 - Detects current availability of the YouTube API quota
 - Stops execution if further requests are not possible
 
+## 🛡️OAuth 2.0 Integration
+
+- The application is designed to use **OAuth 2.0** as the primary authentication method
+- If OAuth client secrets are not found, the system switches to the **YouTube Data API Key** method without interrupting the user
+
+
 ## 💌Comment Explorer
 
 - get a list of comments on YouTube videos in the console
@@ -110,7 +117,13 @@ Basic familiarity with command-line usage is recommended.
 
 ## 📈Channel Explorer
 
-- Collect most of the channel statistics
+- Collect most of the channel statistics:
+  - subscriber count  
+  - view count  
+  - description  
+  - registration date
+  - Channel ID (UC...)
+  - Handle (@...)
 - If necessary, you can search videos on the channel thanks to Video Explorer
 
 <!-- ## Playlist Explorer
@@ -122,20 +135,25 @@ Basic familiarity with command-line usage is recommended.
 
 ## 📄Subtitles Explorer
 
-- You can specify the exact languages for the subtitles you want to collect. Enter one or more two-letter language codes `e.g., en, es, ja` to fetch the corresponding transcripts.
-- You need to choose the type of transcript you retrieve. **Manually created** transcripts for higher accuracy. **Auto-generated** transcripts provided by YouTube AI.
+- **Subtitles Explorer** makes extracting text from videos effortless and flexible. You simply enter the two-letter language codes, such as `en` or `ru`
+- It gives you the choice between `manually created` subtitles for better accuracy or `auto-generated` transcripts. The system is designed to handle missing data intelligently
+- If your preferred transcript type is not available, it will not just show an error and stop. Instead, it detects the issue and offers the alternative version immediately, ensuring you can still retrieve the content you are looking for.
 
 ## 🔢Info Explorer
 
-Enter the video URL, and you will receive the information block from Video Explorer. See numbers in [Video Explorer](#video-explorer).
+- Enter a specific video URL to directly extract metadata without searching
+- Returns the complete information block detailed in [Video Explorer](#video-explorer) and, additionally, the video description
 
 # ⚙️ Functionality
 
-- **The API key** from Google Cloud Console (YouTube Data API v3) is being analyzed. If there is an error, it will ask you to enter it again.
-- the `video id`, which is required for the YouTube Data API, is extracted from the **YouTube video URL**.
-- **Keywords (optional)** — to filter comments. YouTube Explorer will search for comments on these keywords. YouTube Data API will not help it.
-- **The sorting method** is `by relevance` or `by time`. If you press Enter, `by relevance` will be entered.
-- **Number of comments** — output is limited at the user's request.
+- **Authentication** — **OAuth 2.0** is prioritized for secure access. If OAuth credentials are not detected, the application uses the **YouTube Data API key** stored in `Key.bin`.
+- **Link parsing** — `video id`, `channel id` (UC...), and `handle` (@...) are automatically extracted from the links you enter.
+- **Search filters** — You can filter videos by `Region`, `Dimension` (2D or 3D), `Duration`, and `Date` (using the smart calendar).
+- **Channel search** — Unlike standard search, you can perform keyword searches specifically inside a channel's library.
+- **Smart Subtitles** — **YouTube Transcript API** is integrated. It looks for `manually created` subtitles first. If they are missing, it asks if you want `auto-generated` ones. 
+- **Dislikes** — **Return YouTube Dislike API** is integrated to show dislike counts mixed with official data.
+- **Comment filtering** — **Keywords** are used to filter comments and replies locally. The YouTube Data API does not do this filtering.
+- **Quota check** — A test request is made at the start to ensure your **YouTube API quota** is not exceeded before running.
 
 # 🔧 What do I plan to make in the future?
 
@@ -143,7 +161,7 @@ Enter the video URL, and you will receive the information block from Video Explo
 - [x] Explore the channels
 - [x] A more user-friendly, interactive command-line interface
 - [ ] Playlist Explorer
-- [ ] Subtitles Explorer
+- [x] Subtitles Explorer
 
 # 🖌️License
 
