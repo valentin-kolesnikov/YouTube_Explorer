@@ -16,4 +16,4 @@ def youtube_id_finder():
             return match.group(1)
         
         else:
-            url = input("\nTry entering the url again: ")
+            url = input("\nEnter again: ")

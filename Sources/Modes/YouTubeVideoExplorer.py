@@ -37,4 +37,4 @@ def launcherVideos(youtube):
 
     output_videos(results, statrequest)
 
-    input("Press Enter to return...")
+    input("\nPress Enter to return...")
