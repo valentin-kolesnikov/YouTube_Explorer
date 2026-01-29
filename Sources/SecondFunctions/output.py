@@ -30,4 +30,4 @@ def output_videos(results, statrequest):
             f"{views} views; {likes} likes; {dislikes} dislikes; {comments} comments\n"
             f"{formatted_date}\n"
             f"{channelName}\n"
-            f"Channel Link: https://www.youtube.com/channel/{channelId}\n")
+            f"Channel Link: https://www.youtube.com/channel/{channelId}")
