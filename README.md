@@ -32,8 +32,8 @@ It is designed for:
   - [💌Comment Explorer](#comment-explorer)
   - [📹Video Explorer](#video-explorer)
   - [📈Channel Explorer](#channel-explorer)
-  - [🔢Info Explorer](#info-explorer)
   - [📄Subtitles Explorer](#subtitles-explorer)
+  - [🔢Info Explorer](#info-explorer)
 - [⚙️ Functionality](#️-functionality)
 - [🔧 What do I plan to make in the future?](#-what-do-i-plan-to-make-in-the-future)
 - [🖌️License](#️license)
@@ -120,14 +120,14 @@ Basic familiarity with command-line usage is recommended.
 
 -->
 
-## 🔢Info Explorer
-
-Enter the video URL, and you will receive the information block from Video Explorer. See numbers in [Video Explorer](#video-explorer).
-
 ## 📄Subtitles Explorer
 
 - You can specify the exact languages for the subtitles you want to collect. Enter one or more two-letter language codes `e.g., en, es, ja` to fetch the corresponding transcripts.
 - You need to choose the type of transcript you retrieve. **Manually created** transcripts for higher accuracy. **Auto-generated** transcripts provided by YouTube AI.
+
+## 🔢Info Explorer
+
+Enter the video URL, and you will receive the information block from Video Explorer. See numbers in [Video Explorer](#video-explorer).
 
 # ⚙️ Functionality
 
