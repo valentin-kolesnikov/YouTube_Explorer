@@ -10,6 +10,8 @@ from Modes.YouTubeSubtitlesExplorer import launcherSubtitles
 
 from Modes.YouTubeOneVideoInfoExplorer import launcherInfo
 
+from Modes.YouTubeExplorerLicense import launcherNOTICE, launcherLICENSE
+
 from Starter.KeyExplorer import youtube_api_key, window_title
 
 from Starter.QuotaExplorer import test_quota
@@ -44,7 +46,8 @@ if __name__ == "__main__":
                 os.system('cls')
                 print("=========  v.0.9.0  =========")
 
-                questionist = input("1. Comments\n2. Videos\n3. Channels\n4. Playlists(still does not work)\n5. Subtitles\n6. Info of one video\n0. Exit\n\nEnter the number: ") 
+                questionist = input("1. Comments\n2. Videos\n3. Channels\n4. Playlists(still does not work)\n" \
+                "5. Subtitles\n6. One Video Info\n7. LICENSE\n8. NOTICE\n0. Exit\n\nEnter the number: ") 
                 while True:
                     
                     if questionist == '1':
@@ -69,6 +72,14 @@ if __name__ == "__main__":
 
                     elif questionist == "6":
                         launcherInfo(youtube)
+                        break
+
+                    elif questionist == "7":
+                        launcherLICENSE()
+                        break
+
+                    elif questionist == "8":
+                        launcherNOTICE()
                         break
 
                     elif questionist == '0':
