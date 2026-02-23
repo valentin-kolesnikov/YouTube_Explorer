@@ -6,8 +6,6 @@ from FirstFunctions.collecting_info import collect_comments, channel_name
 
 from FirstFunctions.output import count_keys, number_comments
 
-import os
-
 
 
 
@@ -20,15 +18,16 @@ def launcherComments(youtube):
 
     comments, exc = collect_comments(video_id, search_terms, which_order, youtube)
     if exc:
-        os.system('cls')
+        print("\033[H\033[J", end="")
         return
     
     channel, exc = channel_name(video_id, youtube)
     if exc:
-        os.system('cls')
+        print("\033[H\033[J", end="")
         return
     
-    os.system('cls')
+    print("\033[H\033[J", end="")
+
     count_keys(comments, search_terms)
 
     number_comments(comments, channel)

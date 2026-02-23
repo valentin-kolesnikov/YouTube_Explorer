@@ -33,6 +33,6 @@ def test_quota(youtube):
     
 
     except Exception as exc:
-        print(f"Exception: {exc.resp.status}")
+        print(f"\n\u001b[31mException: {exc}\u001b[0m")
 
         return False

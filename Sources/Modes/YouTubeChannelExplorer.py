@@ -8,8 +8,6 @@ from Patterns.Search_Engine import search_engine
 
 from Patterns.asyncRYD import ryd
 
-import os
-
 import asyncio
 
 
@@ -25,7 +23,7 @@ def launcherChannels(youtube):
 
     snistics, uploads_videos, exc = collect_channel_info(youtube, for_id, for_handle)
     if exc:
-        os.system('cls')
+        print("\033[H\033[J", end="")
         return
     
     if get_answers == "y":
@@ -34,31 +32,35 @@ def launcherChannels(youtube):
 
         video_Ids, exc = search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension)
         if exc:
-            os.system('cls')
+            print("\033[H\033[J", end="")
             return
         
         result = asyncio.run(ryd(video_Ids))
 
         statrequests, exc = collect_channel_stats_videos(youtube, video_Ids)
         if exc:
-            os.system('cls')
+            print("\033[H\033[J", end="")
             return
+        
+        print("\033[H\033[J", end="")
 
         output_channel_info(result, statrequests, get_answers, snistics)
 
     elif get_answers == "n":
         videoIds, exc = collect_popular_videos(youtube, uploads_videos)
         if exc:
-            os.system('cls')
+            print("\033[H\033[J", end="")
             return
 
         result = asyncio.run(ryd(videoIds))
 
         statrequests, exc = collect_statistics(youtube, videoIds)
         if exc:
-            os.system('cls')
+            print("\033[H\033[J", end="")
             return
         
+        print("\033[H\033[J", end="")
+
         output_channel_info(result, statrequests, get_answers, snistics)
 
     input("\nPress Enter to return...")

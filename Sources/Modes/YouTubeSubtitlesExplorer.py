@@ -8,9 +8,11 @@ from FifthFunctions.collecting_info import transcript_fetcher
 
 from FifthFunctions.output import available_languages, transcript_fetch, output
 
-from InputData.SubtitlesExplorer import *
+from InputData.SubtitlesExplorer import language_needed, view_of_text
 
-import os
+
+
+
 
 
 
@@ -25,19 +27,19 @@ def launcherSubtitles(youtube):
     
     except VideoUnplayable:
 
-        input("\nERROR: the video is unplayable\n\nPress Enter to return...")
+        input("\n\u001b[31mThe video is unplayable\u001b[0m\n\nPress Enter to return...")
 
         return
     
     except RequestBlocked:
 
-        input("\nERROR: YouTube is blocking requests from your IP\n\nPress Enter to return...")
+        input("\n\u001b[31mYouTube is blocking requests from your IP\u001b[0m\n\nPress Enter to return...")
 
         return
     
     except TranscriptsDisabled:
 
-        input("\nERROR: the video does not have subtitles\n\nPress Enter to return...")
+        input("\n\u001b[31mThe video does not have subtitles\u001b[0m\n\nPress Enter to return...")
 
         return
     
@@ -47,15 +49,16 @@ def launcherSubtitles(youtube):
     manually_generated = view_of_text()
 
     transcript_subtitles, exc = transcript_fetcher(video_list, languages_list, manually_generated)
+
     if exc:
-        os.system('cls')
+        print("\033[H\033[J", end="")
         return
     
     available_lang = available_languages(transcript_subtitles)
 
     full_text = transcript_fetch(transcript_subtitles)
 
-    os.system('cls')
+    print("\033[H\033[J", end="")
 
     output(transcript_subtitles, available_lang, full_text)
 

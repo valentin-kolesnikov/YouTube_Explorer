@@ -20,7 +20,7 @@ from Starter.OAuth2 import youtube_OAuth2
 
 from sys import exit
 
-import os
+
 
 
 
@@ -43,13 +43,22 @@ if __name__ == "__main__":
                 exit(1)
 
             while True:
-                os.system('cls')
-                print("=========  v.0.9.0  =========")
+                print("\033[H\033[J", end="") #clear console
+                print("=========  v1.0.0  =========\n")
 
-                questionist = input("1. Comments\n2. Videos\n3. Channels\n4. Playlists(still does not work)\n" \
-                "5. Subtitles\n6. One Video Info\n7. LICENSE\n8. NOTICE\n0. Exit\n\nEnter the number: ") 
+                questionist = input(
+                    "1. Comments\n" \
+                    "2. Videos\n" \
+                    "3. Channels\n" \
+                    "4. Playlists\n" \
+                    "5. Subtitles\n" \
+                    "6. One Video Info\n" \
+                    "7. LICENSE\n" \
+                    "8. NOTICE\n" \
+                    "0. Exit\n\n" \
+                    "Enter the number: ")
+                
                 while True:
-                    
                     if questionist == '1':
                         launcherComments(youtube)
                         break
@@ -61,7 +70,7 @@ if __name__ == "__main__":
                     elif questionist == '3':
                         launcherChannels(youtube)
                         break
-                    
+
                     elif questionist == "4":
                         launcherPlaylists(youtube, exc_OAuth2)
                         break

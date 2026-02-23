@@ -49,9 +49,5 @@ def youtube_api_key():
     return youtube
 
 def window_title(title):
-    if os.name == "nt":
-        os.system(f"title {title}")
-
-    else:
-        sys.stdout.write(f"\33]0;{title}\a")
-        sys.stdout.flush()
+    sys.stdout.write(f"\33]0;{title}\a")
+    sys.stdout.flush()

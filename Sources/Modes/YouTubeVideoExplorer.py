@@ -8,10 +8,7 @@ from SecondFunctions.output import output_videos
 
 from Patterns.asyncRYD import ryd
 
-import os
-
 import asyncio
-
 
 
 
@@ -23,17 +20,17 @@ def launcherVideos(youtube):
     
     video_ids, exc = collect_searches(youtube, keywords, region, ageAfter, ageBefore, duration, maximum, which_order, dimension)
     if exc:
-        os.system('cls')
+        print("\033[H\033[J", end="")
         return
 
     results = asyncio.run(ryd(video_ids))
 
     statrequest, exc = collect_stats(youtube, video_ids)
     if exc:
-        os.system('cls')
+        print("\033[H\033[J", end="")
         return
     
-    os.system('cls')
+    print("\033[H\033[J", end="")
 
     output_videos(results, statrequest)
 

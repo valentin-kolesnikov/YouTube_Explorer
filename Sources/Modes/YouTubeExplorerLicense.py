@@ -4,13 +4,12 @@ import sys
 
 
 
+
+
 if getattr(sys, "frozen", False):
     dir = os.path.dirname(os.path.dirname(sys.executable))
 else:
     dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-
-
 
 
 def launcherLICENSE():
@@ -29,13 +28,11 @@ def launcherLICENSE():
 
         return
 
-    os.system('cls')
+    print("\033[H\033[J", end="")
 
     print(license_text)
 
     input("Press Enter to return...")
-
-
 
 
 
@@ -56,7 +53,7 @@ def launcherNOTICE():
 
         return
     
-    os.system('cls')
+    print("\033[H\033[J", end="")
 
     print(notice_text)
 

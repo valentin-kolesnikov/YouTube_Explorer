@@ -57,19 +57,19 @@ def transcript_fetcher(video_id_list, languages_list, manually_generated):
 
     except NoTranscriptFound:
 
-        input("No transcripts were found\n\nPress Enter to return...")
+        input("\u001b[31mNo transcripts were found\u001b[0m\n\nPress Enter to return...")
 
         return {}, True
     
 
     except VideoUnavailable:
 
-        input("The video is unavailable\n\nPress Enter to return...")
+        input("\u001b[31mThe video is unavailable\u001b[0m\n\nPress Enter to return...")
 
         return {}, True
     
     except TranslationLanguageNotAvailable:
 
-        input("The translation language is not available\n\nPress Enter to return...")
+        input("\u001b[31mThe translation language is not available\u001b[0m\n\nPress Enter to return...")
 
         return {}, True

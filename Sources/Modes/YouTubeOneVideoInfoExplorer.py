@@ -8,19 +8,21 @@ from SixthFunctions.output import output_info
 
 import asyncio
 
-import os
+
+
+
 
 def launcherInfo(youtube):
     video_id = youtube_id_finder()
     
     statrequest, exc = collect_stats(youtube, [video_id])
     if exc:
-        os.system('cls')
+        print("\033[H\033[J", end="")
         return
     
     results = asyncio.run(ryd([video_id]))
 
-    os.system('cls')
+    print("\033[H\033[J", end="")
 
     output_info(results, statrequest)
 
