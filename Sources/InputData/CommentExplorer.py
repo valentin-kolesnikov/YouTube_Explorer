@@ -30,7 +30,7 @@ def youtube_filters():
             break
 
         else:
-            which_order = input("Enter again: ")
+            which_order = input("\nEnter again: ")
 
 
     return which_order, search_terms
