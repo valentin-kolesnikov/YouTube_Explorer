@@ -12,6 +12,8 @@ from Modes.YouTubeOneVideoInfoExplorer import launcherInfo
 
 from Modes.YouTubeExplorerLicense import launcherNOTICE, launcherLICENSE
 
+from Modes.YouTubeASCIIExplorer import launcherASCII
+
 from Starter.KeyExplorer import youtube_api_key, window_title
 
 from Starter.QuotaExplorer import test_quota
@@ -55,6 +57,7 @@ if __name__ == "__main__":
                     "6. One Video Info\n" \
                     "7. LICENSE\n" \
                     "8. NOTICE\n" \
+                    "9. ASCII Art label\n" \
                     "0. Exit\n\n" \
                     "Enter the number: ")
                 
@@ -89,6 +92,10 @@ if __name__ == "__main__":
 
                     elif questionist == "8":
                         launcherNOTICE()
+                        break
+
+                    elif questionist == "9":
+                        launcherASCII()
                         break
 
                     elif questionist == '0':
