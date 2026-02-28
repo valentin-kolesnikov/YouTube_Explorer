@@ -17,10 +17,22 @@ def http_error(exc):
 
 def WinError(exc):
     
-    if exc.error == 10054:
-            print("\n\u001b[31mConnection was forcibly closed by the remote host (WinError 10054)\u001b[0m")
+    if exc.errno == 10054:
+        print("\n\u001b[31mConnection was forcibly closed by the remote host (WinError 10054)\u001b[0m")
+
+    elif exc.errno == 11001:
+        print("\n\u001b[31mNo Internet connection available (WinError 11001)\u001b[0m")
 
     else:
-        print("\n\u001b[31mUnknown connection issues.\u001b[0m")
+        print("\n\u001b[31mInternet connection is probably unavailable.\u001b[0m")
 
-    input("\nPress Enter to return...")
+    exit_continue = input("\n\u001b[31m1. Retry connection\n2. Exit\n\nYour choice:\u001b[0m ")
+
+    if exit_continue == "1":
+        pass
+    
+    elif exit_continue == "2":
+        exit(1)
+
+    else:
+        exit_continue = input("\u001b[31mEnter again:\u001b[0m ")

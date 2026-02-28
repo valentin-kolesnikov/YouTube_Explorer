@@ -14,6 +14,8 @@ from Modes.YouTubeExplorerLicense import launcherNOTICE, launcherLICENSE
 
 from Modes.YouTubeASCIIExplorer import launcherASCII
 
+from Patterns.check_connection import internet_available
+
 from Starter.KeyExplorer import youtube_api_key, window_title
 
 from Starter.QuotaExplorer import test_quota
@@ -34,6 +36,8 @@ if __name__ == "__main__":
     while True:
         try:
             window_title("YouTube Explorer")
+
+            internet_available()
 
             youtube, exc_OAuth2 = youtube_OAuth2()
             if exc_OAuth2:
@@ -57,7 +61,6 @@ if __name__ == "__main__":
                     "6. One Video Info\n" \
                     "7. LICENSE\n" \
                     "8. NOTICE\n" \
-                    "9. ASCII Art label\n" \
                     "0. Exit\n\n" \
                     "Enter the number: ")
                 

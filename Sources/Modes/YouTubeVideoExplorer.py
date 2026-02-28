@@ -6,6 +6,8 @@ from Patterns.collectingStats import collect_stats
 
 from SecondFunctions.output import output_videos
 
+from Patterns.check_connection import internet_available
+
 from Patterns.asyncRYD import ryd
 
 import asyncio
@@ -17,6 +19,8 @@ import asyncio
 
 def launcherVideos(youtube):
     keywords, region, ageAfter, ageBefore, duration, maximum, which_order, dimension = searching_for_videos()
+
+    internet_available()
     
     video_ids, exc = collect_searches(youtube, keywords, region, ageAfter, ageBefore, duration, maximum, which_order, dimension)
     if exc:

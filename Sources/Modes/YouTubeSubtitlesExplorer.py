@@ -4,6 +4,8 @@ from youtube_transcript_api._errors import (VideoUnplayable, RequestBlocked, Tra
 
 from Patterns.EnteringURL import youtube_id_finder
 
+from Patterns.errors import WinError
+
 from FifthFunctions.collecting_info import transcript_fetcher
 
 from FifthFunctions.output import available_languages, transcript_fetch, output
@@ -24,6 +26,12 @@ def launcherSubtitles(youtube):
     video_id = youtube_id_finder()
     try:
         video_list = YouTubeTranscriptApi().list(video_id)
+
+    except OSError as exc:
+
+        WinError(exc)
+
+        return
     
     except VideoUnplayable:
 
@@ -49,14 +57,23 @@ def launcherSubtitles(youtube):
     manually_generated = view_of_text()
 
     transcript_subtitles, exc = transcript_fetcher(video_list, languages_list, manually_generated)
-
+    
     if exc:
         print("\033[H\033[J", end="")
         return
     
-    available_lang = available_languages(transcript_subtitles)
 
-    full_text = transcript_fetch(transcript_subtitles)
+    try:
+        available_lang = available_languages(transcript_subtitles)
+
+        full_text = transcript_fetch(transcript_subtitles)
+
+    except OSError as exc:
+
+         WinError(exc)
+
+         return
+    
 
     print("\033[H\033[J", end="")
 

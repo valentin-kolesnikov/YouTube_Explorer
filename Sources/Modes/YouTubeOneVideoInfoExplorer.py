@@ -4,6 +4,8 @@ from Patterns.EnteringURL import youtube_id_finder
 
 from Patterns.collectingStats import collect_stats
 
+from Patterns.check_connection import internet_available
+
 from SixthFunctions.output import output_info
 
 import asyncio
@@ -14,6 +16,8 @@ import asyncio
 
 def launcherInfo(youtube):
     video_id = youtube_id_finder()
+
+    internet_available()
     
     statrequest, exc = collect_stats(youtube, [video_id])
     if exc:

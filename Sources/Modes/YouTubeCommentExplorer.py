@@ -6,6 +6,8 @@ from FirstFunctions.collecting_info import collect_comments, channel_name
 
 from FirstFunctions.output import count_keys, number_comments
 
+from Patterns.check_connection import internet_available
+
 
 
 
@@ -15,6 +17,8 @@ def launcherComments(youtube):
     video_id = youtube_id_finder()
 
     which_order, search_terms = youtube_filters()
+
+    internet_available()
 
     comments, exc = collect_comments(video_id, search_terms, which_order, youtube)
     if exc:

@@ -6,6 +6,8 @@ from ThirdFunctions.output import output_channel_info
 
 from Patterns.Search_Engine import search_engine
 
+from Patterns.check_connection import internet_available
+
 from Patterns.asyncRYD import ryd
 
 import asyncio
@@ -30,6 +32,8 @@ def launcherChannels(youtube):
 
         keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension = search_engine()
 
+        internet_available()
+
         video_Ids, exc = search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension)
         if exc:
             print("\033[H\033[J", end="")
@@ -47,6 +51,9 @@ def launcherChannels(youtube):
         output_channel_info(result, statrequests, get_answers, snistics)
 
     elif get_answers == "n":
+
+        internet_available()
+
         videoIds, exc = collect_popular_videos(youtube, uploads_videos)
         if exc:
             print("\033[H\033[J", end="")
