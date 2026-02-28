@@ -54,7 +54,14 @@ def collect_channel_info(youtube, for_id, for_handle):
 
         return {}, {}, True
     
+    
+    except OSError as exc:
 
+        WinError(exc)
+
+        return {}, {}, True
+    
+    
     except Exception:
 
         if ValueError:
@@ -68,11 +75,7 @@ def collect_channel_info(youtube, for_id, for_handle):
         return {}, {}, True
     
 
-    except OSError as exc:
-
-        WinError(exc)
-
-        return {}, {}, True
+    
     
     
 def search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension):  #collect_searches is similar
@@ -130,16 +133,14 @@ def collect_channel_stats_videos(youtube, video_Ids):
 
         return {}, True
     
-    
-    except Exception:
-        print("\nProbably, YouTube has problems with submitted objects")
-
-        return {}, True
-    
-
     except OSError as exc:
 
         WinError(exc)
+
+        return {}, True
+    
+    except Exception:
+        print("\nProbably, YouTube has problems with submitted objects")
 
         return {}, True
     
@@ -191,15 +192,13 @@ def collect_statistics(youtube, videosIds):
 
         return {}, True
     
-
-    except Exception:
-        print("\nProbably, YouTube has problems with submitted objects")
-
-        return {}, True
-    
-    
     except OSError as exc:
 
         WinError(exc)
+
+        return {}, True
+    
+    except Exception:
+        print("\nProbably, YouTube has problems with submitted objects")
 
         return {}, True
