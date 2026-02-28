@@ -8,6 +8,7 @@ from datetime import datetime
 
 
 
+
 def collect_channel_info(youtube, for_id, for_handle):
     try:
         request = youtube.channels().list(
@@ -47,14 +48,14 @@ def collect_channel_info(youtube, for_id, for_handle):
         return snistics, uploads_videos, False
     
 
-    except HttpError as excs:
+    except HttpError as exc:
 
-        http_error(excs)
+        http_error(exc)
 
         return {}, {}, True
     
 
-    except Exception as excs:
+    except Exception:
 
         if ValueError:
             print("\nThe channel is not found.")
@@ -160,9 +161,9 @@ def collect_popular_videos(youtube, uploads_videos):
         return videoIds, False
 
 
-    except HttpError as excs:
+    except HttpError as exc:
 
-        http_error(excs)
+        http_error(exc)
 
         return {}, True
     
@@ -184,9 +185,9 @@ def collect_statistics(youtube, videosIds):
         return statrequests, False
     
 
-    except HttpError as excs:
+    except HttpError as exc:
 
-        http_error(excs)
+        http_error(exc)
 
         return {}, True
     
