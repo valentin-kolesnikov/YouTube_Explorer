@@ -10,6 +10,8 @@ def count_keys(comments, search_terms):
     print(f"Total comments: {amount_comments}\n")
     for kw, count in counts.items():
         print(f"{kw}: {count}")
+
+    return amount_comments
     
 def number_comments(comments, channel):
     number = input("\nHow many comments do you need?: ")

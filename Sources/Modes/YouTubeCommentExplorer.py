@@ -32,7 +32,10 @@ def launcherComments(youtube):
     
     print("\033[H\033[J", end="")
 
-    count_keys(comments, search_terms)
+    amount_comments = count_keys(comments, search_terms)
+    if amount_comments == 0:
+        input("\nPress Enter to return...")
+        return
 
     number_comments(comments, channel)
 
