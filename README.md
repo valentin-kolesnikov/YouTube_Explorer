@@ -8,7 +8,7 @@
    <img src="https://img.shields.io/badge/Python-3.14.0-yellowblue" alt="Python 3.14.0">
 </p>
 
-# YouTube Explorer
+## <p align="center">English | <a href="README_RU.md">Русский</a></p>
 
 **YouTube Explorer** is a console-based Python tool for programmatic exploration of YouTube content using **YouTube Data API v3** (with OAuth 2.0 support), **Return YouTube Dislike API**, and **YouTube Transcript API**
 
@@ -22,7 +22,6 @@ It is designed for:
 
 # 🗒️Table of Contents
 
-- [YouTube Explorer](#youtube-explorer)
 - [🗒️Table of Contents](#️table-of-contents)
 - [❗Requirements](#requirements)
 - [❓How to get the YouTube Data API v3 key?](#how-to-get-the-youtube-data-api-v3-key)
@@ -165,7 +164,7 @@ Basic familiarity with command-line usage is recommended.
 
 # 🖌️License
 
-YouTubeExplorer is licensed under the Apache-2.0 license.
+YouTube Explorer is licensed under the Apache-2.0 license.
 
 Versions released before 22-01-2026 were licensed under the MIT License.
 
