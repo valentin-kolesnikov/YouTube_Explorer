@@ -1,6 +1,6 @@
 from Patterns.errors import WinError
 
-import socket
+import urllib.request
 
 
 
@@ -9,9 +9,9 @@ import socket
 
 def internet_available():
     try:
-        socket.create_connection(("8.8.8.8", 53), timeout=3)
-        return
-            
+        urllib.request.urlopen("https://google.com", timeout=3)
+        return True
+
     except OSError as exc:
         
         WinError(exc)

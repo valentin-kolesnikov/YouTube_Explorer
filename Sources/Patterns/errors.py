@@ -28,11 +28,12 @@ def WinError(exc):
 
     exit_continue = input("\n\u001b[31m1. Retry connection\n2. Exit\n\nYour choice:\u001b[0m ")
 
-    if exit_continue == "1":
-        pass
-    
-    elif exit_continue == "2":
-        exit(1)
+    while True:
+        if exit_continue == "1":
+            break
+        
+        elif exit_continue == "2":
+            exit(1)
 
-    else:
-        exit_continue = input("\u001b[31mEnter again:\u001b[0m ")
+        else:
+            exit_continue = input("\n\u001b[31mEnter again:\u001b[0m ")
