@@ -6,7 +6,7 @@ import re
 
 
 
-def search_engine():
+def search_engine(playlist_enabled):
     keywords = input("\nEnter a request on YouTube without (| and -): ")
 
     while True:
@@ -18,7 +18,7 @@ def search_engine():
 
     keywords = re.sub(r"[|-]", " ", keywords)
 
-    filterQ = input("\nDo you need to filter videos?(y/n): ").lower()
+    filterQ = input("\nDo you need to filter resources?(y/n): ").lower()
     while True:
         if filterQ == "y":
 
@@ -51,26 +51,27 @@ def search_engine():
 
                     else:
                         which_order = input("\nEnter again: ")
+                        
+                if not playlist_enabled:
+                    dimensionDict = {
+                        "1": "2d",
+                        "2": "3d",
+                        "3": "any"
+                    }
+                    dimension = input("\nWhat dimension do you need?\n1. 2d\n2. 3d\n\n3. Enter the number: ")
 
-                dimensionDict = {
-                    "1": "2d",
-                    "2": "3d",
-                    "3": "any"
-                }
-                dimension = input("\nWhat dimension do you need?\n1. 2d\n2. 3d\n\n3. Enter the number: ")
+                    while True:
+                        if dimension in dimensionDict:
+                            dimension = dimensionDict[dimension]
+                            break
 
-                while True:
-                    if dimension in dimensionDict:
-                        dimension = dimensionDict[dimension]
-                        break
-
-                    else:
-                        dimension = input("\nEnter again: ")
+                        else:
+                            dimension = input("\nEnter again: ")
             else:
                 which_order = "relevance"
                 dimension = "any"
 
-            dateBefore = input("\nDo you need videos before some time?(y/n): ").lower()
+            dateBefore = input("\nDo you need resources before some time?(y/n): ").lower()
             while True: 
                 if dateBefore == "y":
                     yearB, monthB, dayB = age_calendar(dateBefore=True)
@@ -87,7 +88,7 @@ def search_engine():
                     dateBefore = input("Enter again: ").lower()
 
 
-            dateAfter = input("\nDo you need videos after some time?(y/n): ").lower()
+            dateAfter = input("\nDo you need resources after some time?(y/n): ").lower()
             while True:
 
                 if dateAfter == "y":
@@ -105,38 +106,37 @@ def search_engine():
                     dateAfter = input("Enter again: ").lower()
             
 
-            durationQ = input("\nDo you need a duration of video?(y/n): ").lower()
-            
-            
-            
-            while True:
+            if not playlist_enabled:
+                durationQ = input("\nDo you need a duration of video?(y/n): ").lower()
+                
+                while True:
 
-                if durationQ == "y":
-                    
-                    durationDict = {
-                    "1": "short",
-                    "2": "medium",
-                    "3": "long"
-                    }
-                    
-                    duration = input('\n1. Short - less 4 minutes\n2. medium - from 4 to 20 minutes\n3. long - from 20 minutes\n\nEnter the number: ')
+                    if durationQ == "y":
+                        
+                        durationDict = {
+                        "1": "short",
+                        "2": "medium",
+                        "3": "long"
+                        }
+                        
+                        duration = input('\n1. Short - less 4 minutes\n2. medium - from 4 to 20 minutes\n3. long - from 20 minutes\n\nEnter the number: ')
 
-                    while True:
-                        if duration in durationDict:
-                            duration = durationDict[duration]
-                            break
+                        while True:
+                            if duration in durationDict:
+                                duration = durationDict[duration]
+                                break
 
-                        else:
-                            duration = input("\nEnter again: ")
+                            else:
+                                duration = input("\nEnter again: ")
 
-                elif durationQ == "n":
-                    duration = "any"
+                    elif durationQ == "n":
+                        duration = "any"
+                        break
+
+                    else:
+                        durationQ = input("\nEnter again: ").lower()
+
                     break
-
-                else:
-                    durationQ = input("\nEnter again: ").lower()
-
-                break
         
         elif filterQ == "n":
             which_order = "relevance"
@@ -150,7 +150,7 @@ def search_engine():
             filterQ = input("\nEnter again: ").lower()
 
 
-    maximum = input("\nHow much do you want to receive videos?: ")
+    maximum = input("\nHow much do you want to receive resources?: ")
 
     while True:
         if maximum.isdigit():
@@ -163,7 +163,7 @@ def search_engine():
     if maximum > 51:
         maximum = 50
         
-    elif maximum < 1:
+    elif maximum < 0:
         maximum = 1
 
     return keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension

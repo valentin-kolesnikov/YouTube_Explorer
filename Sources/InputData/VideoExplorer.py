@@ -15,7 +15,7 @@ def searching_for_videos():
 
 
 
-    keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension = search_engine()
+    keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension = search_engine(playlist_enabled=False)
 
 
     return keywords, region, ageAfter, ageBefore, duration, maximum, which_order, dimension

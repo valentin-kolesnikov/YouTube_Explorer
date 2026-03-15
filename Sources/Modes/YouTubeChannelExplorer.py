@@ -30,7 +30,7 @@ def launcherChannels(youtube):
     
     if get_answers == "y":
 
-        keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension = search_engine()
+        keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension = search_engine(playlist_enabled=False)
 
         internet_available()
 
