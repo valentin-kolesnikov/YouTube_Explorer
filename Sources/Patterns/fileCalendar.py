@@ -44,10 +44,10 @@ def age_calendar(dateBefore=False, dateAfter=False):
         elif int(day) < 31 and month in ['04', '06', '09', '11']:
             day = str(day).zfill(2)
 
-        elif plus_year == True and month == "02" and int(day) < 30:
+        elif plus_year and month == "02" and int(day) < 30:
             day = str(day).zfill(2)
         
-        elif plus_year == False and month == "02" and int(day) < 29:
+        elif not plus_year and month == "02" and int(day) < 29:
             day = str(day).zfill(2)
         
         else:
