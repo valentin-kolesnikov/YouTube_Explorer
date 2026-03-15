@@ -25,15 +25,17 @@ def collect_stats(youtube, video_ids):
 
         return {}, True
     
-
-    except Exception:
-        print("Probably, YouTube has problems with submitted objects")
-
-        return {}, True
-        
-
     except OSError as exc:
 
         WinError(exc)
 
         return {}, True
+    
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
+
+        return {}, True
+        
+
+    
