@@ -10,7 +10,7 @@ from Patterns.check_connection import internet_available
 
 from Patterns.asyncRYD import ryd
 
-import asyncio
+from asyncio import run
 
 
 
@@ -39,7 +39,7 @@ def launcherChannels(youtube):
             print("\033[H\033[J", end="")
             return
         
-        result = asyncio.run(ryd(video_Ids))
+        result = run(ryd(video_Ids))
 
         statrequests, exc = collect_channel_stats_videos(youtube, video_Ids)
         if exc:
@@ -59,7 +59,7 @@ def launcherChannels(youtube):
             print("\033[H\033[J", end="")
             return
 
-        result = asyncio.run(ryd(videoIds))
+        result = run(ryd(videoIds))
 
         statrequests, exc = collect_statistics(youtube, videoIds)
         if exc:
@@ -70,4 +70,4 @@ def launcherChannels(youtube):
 
         output_channel_info(result, statrequests, get_answers, snistics)
 
-    input("\nPress Enter to return...")
+    input("\n\nPress Enter to return...")

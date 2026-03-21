@@ -73,3 +73,9 @@ def transcript_fetcher(video_id_list, languages_list, manually_generated):
         input("\u001b[31mThe translation language is not available\u001b[0m\n\nPress Enter to return...")
 
         return {}, True
+    
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
+
+        return {}, True

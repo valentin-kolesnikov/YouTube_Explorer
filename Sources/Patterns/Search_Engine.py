@@ -1,5 +1,6 @@
 from Patterns.fileCalendar import age_calendar
-import re
+
+from re import sub
 
 
 
@@ -16,7 +17,7 @@ def search_engine(playlist_enabled):
         else:
             break
 
-    keywords = re.sub(r"[|-]", " ", keywords)
+    keywords = sub(r"[|-]", " ", keywords)
 
     filterQ = input("\nDo you need to filter resources?(y/n): ").lower()
     while True:

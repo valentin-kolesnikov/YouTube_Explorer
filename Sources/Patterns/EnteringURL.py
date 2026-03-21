@@ -1,4 +1,4 @@
-import re
+from re import search
 
 
 
@@ -10,7 +10,7 @@ def youtube_id_finder():
 
     while True:
         pattern = r"(?:v=|\/)([0-9A-Za-z_-]{11})"
-        match = re.search(pattern, url)
+        match = search(pattern, url)
 
         if match:
             return match.group(1)

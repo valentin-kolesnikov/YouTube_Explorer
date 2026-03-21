@@ -1,4 +1,4 @@
-import re
+from re import fullmatch
 
 
 def language_needed():
@@ -15,7 +15,7 @@ def language_needed():
             language = input("\nEnter again: ")
             continue
 
-        if not re.fullmatch(r"[A-Za-z]+", language):
+        if not fullmatch(r"[A-Za-z]+", language):
             language = input("\nEnter it again in English: ")
             continue
 

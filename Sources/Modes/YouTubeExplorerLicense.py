@@ -1,4 +1,4 @@
-import os
+from os import path
 
 import sys
 
@@ -7,15 +7,15 @@ import sys
 
 
 if getattr(sys, "frozen", False):
-    dir = os.path.dirname(os.path.dirname(sys.executable))
+    dir = path.dirname(path.dirname(sys.executable))
 else:
-    dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    dir = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
 
 
 def launcherLICENSE():
-    license = os.path.join(dir, "LICENSE")
+    license = path.join(dir, "LICENSE")
 
-    if os.path.isfile(license):
+    if path.isfile(license):
         with open(license, "r", encoding="utf-8") as f:
             license_text = f.read()
 
@@ -32,15 +32,15 @@ def launcherLICENSE():
 
     print(license_text)
 
-    input("Press Enter to return...")
+    input("\nPress Enter to return...")
 
 
 
 
 def launcherNOTICE():
-    notice = os.path.join(dir, "NOTICE")
+    notice = path.join(dir, "NOTICE")
 
-    if os.path.isfile(notice):
+    if path.isfile(notice):
         with open(notice, "r", encoding="utf-8") as f:
             notice_text = f.read()
 
@@ -57,4 +57,4 @@ def launcherNOTICE():
 
     print(notice_text)
 
-    input("Press Enter to return...")
+    input("\nPress Enter to return...")

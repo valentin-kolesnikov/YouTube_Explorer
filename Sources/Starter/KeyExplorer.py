@@ -1,5 +1,7 @@
 from googleapiclient.discovery import build
-import os
+
+from os import path, makedirs
+
 import sys
 
 
@@ -7,16 +9,16 @@ import sys
 
 
 if getattr(sys, "frozen", False):
-    app_folder = os.path.dirname(sys.executable)
+    app_folder = path.dirname(sys.executable)
 else:
-    app_folder = os.path.dirname(__file__)
+    app_folder = path.dirname(__file__)
 
 
-key_folder = os.path.join(app_folder, "Keys")
-os.makedirs(key_folder, exist_ok=True)
+key_folder = path.join(app_folder, "Keys")
+makedirs(key_folder, exist_ok=True)
 
 
-key_file = os.path.join(key_folder, "Key.bin")
+key_file = path.join(key_folder, "Key.bin")
 
 
 class memory():
@@ -27,7 +29,7 @@ class memory():
 
 
     def load_key():
-        if os.path.exists(key_file):
+        if path.exists(key_file):
             with open(key_file, "rb") as f:
                 return f.read().decode("utf-8")
         return None

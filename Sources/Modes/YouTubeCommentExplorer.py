@@ -39,4 +39,4 @@ def launcherComments(youtube):
 
     number_comments(comments, channel)
 
-    input("\nPress Enter to return...")
+    input("\n\nPress Enter to return...")

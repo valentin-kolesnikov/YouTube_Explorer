@@ -1,6 +1,6 @@
-import aiohttp
+from aiohttp import ClientSession
 
-import asyncio
+from asyncio import gather
 
 
 
@@ -22,10 +22,10 @@ async def fetch_ryd(session, vid):
 async def ryd(video_ids):
     results = {}
 
-    async with aiohttp.ClientSession() as session:
+    async with ClientSession() as session:
 
         tasks = [fetch_ryd(session, vid) for vid in video_ids]
-        responses = await asyncio.gather(*tasks)
+        responses = await gather(*tasks)
 
         for vid, data in responses:
             results[vid] = data

@@ -33,7 +33,7 @@ def output_channel_info(result, statrequests, get_answers, snistics):
         number += 1
 
         print(
-            f"{number}.\n"
+            f"\n{number}.\n"
             f"{title_video}\n"
             f"https://www.youtube.com/watch?v={videos_id}\n"
             f"{ch_views} views; {ch_likes} likes; {ch_dislikes} dislikes; {ch_comments} comments\n"

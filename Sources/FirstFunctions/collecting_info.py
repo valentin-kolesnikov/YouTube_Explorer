@@ -2,8 +2,7 @@ from googleapiclient.errors import HttpError
 
 from Patterns.errors import http_error, WinError
 
-import json
-
+from json import loads
 
 
 
@@ -32,6 +31,15 @@ def channel_name(video_id, youtube):
         WinError(exc)
 
         return {}, True
+    
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
+
+        return {}, True
+    
+
+
     
 def collect_comments(video_id, search_terms, which_order, youtube):
     comments = []
@@ -81,7 +89,7 @@ def collect_comments(video_id, search_terms, which_order, youtube):
 
         elif status == 403:
             error_reason = exc.content.decode("utf-8")
-            error_json = json.loads(error_reason)
+            error_json = loads(error_reason)
             reason = error_json["error"]["errors"][0]["reason"]
 
             if reason == "commentsDisabled":
@@ -105,5 +113,11 @@ def collect_comments(video_id, search_terms, which_order, youtube):
     except OSError as exc:
 
         WinError(exc)
+
+        return {}, True
+    
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
 
         return {}, True

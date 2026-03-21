@@ -8,7 +8,7 @@ from Patterns.check_connection import internet_available
 
 from SixthFunctions.output import output_info
 
-import asyncio
+from asyncio import run
 
 
 
@@ -24,10 +24,10 @@ def launcherInfo(youtube):
         print("\033[H\033[J", end="")
         return
     
-    results = asyncio.run(ryd([video_id]))
+    results = run(ryd([video_id]))
 
     print("\033[H\033[J", end="")
 
     output_info(results, statrequest)
 
-    input("Press Enter to return...")
+    input("\n\nPress Enter to return...")

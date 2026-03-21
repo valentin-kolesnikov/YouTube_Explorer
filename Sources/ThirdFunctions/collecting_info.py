@@ -175,6 +175,12 @@ def collect_popular_videos(youtube, uploads_videos):
 
         return {}, True
     
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
+
+        return {}, True
+    
     
 def collect_statistics(youtube, videosIds):
     try:

@@ -79,4 +79,4 @@ def launcherSubtitles(youtube):
 
     output(transcript_subtitles, available_lang, full_text)
 
-    input("\nPress Enter to return...")
+    input("\n\nPress Enter to return...")
