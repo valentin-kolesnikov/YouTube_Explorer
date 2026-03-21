@@ -24,7 +24,7 @@ def output_videos(results, statrequest):
         number += 1
 
         print(
-            f"{number}.\n"
+            f"\n{number}.\n"
             f"{title}\n"
             f"https://www.youtube.com/watch?v={video_id}\n"
             f"{views} views; {likes} likes; {dislikes} dislikes; {comments} comments\n"

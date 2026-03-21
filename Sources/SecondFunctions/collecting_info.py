@@ -42,3 +42,9 @@ def collect_searches(youtube, keywords, region, ageAfter, ageBefore, duration, m
         WinError(exc)
 
         return {}, True
+    
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
+
+        return {}, True

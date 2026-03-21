@@ -23,8 +23,8 @@ def output_info(results, statrequest):
         print(
             f"Title: {title}\n"
             f"Video Link: https://www.youtube.com/watch?v={video_id}\n"
-            f"{views} views; {likes} likes; {dislikes} dislikes; {comments} comments\n"
-            f"Description:\n=================================\n{description}\n=================================\n"
+            f"{views} views; {likes} likes; {dislikes} dislikes; {comments} comments\n\n"
+            f"Description:\n=================================\n{description}\n=================================\n\n"
             f"Date: {formatted_date}\n"
             f"Channel: {channelName}\n"
-            f"Channel Link: https://www.youtube.com/channel/{channelId}\n")
+            f"Channel Link: https://www.youtube.com/channel/{channelId}")
