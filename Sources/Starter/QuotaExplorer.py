@@ -1,7 +1,8 @@
 from googleapiclient.errors import HttpError
 
-import json
+from json import loads
 
+from httplib2.error import ServerNotFoundError
 
 
 
@@ -20,7 +21,7 @@ def test_quota(youtube):
         
         if status == 403:
             error_reason = exc.content.decode("utf-8")
-            error_json = json.loads(error_reason)
+            error_json = loads(error_reason)
             reason = error_json["error"]["errors"][0]["reason"]
 
             if reason == "quotaExceeded":
@@ -31,8 +32,15 @@ def test_quota(youtube):
 
         return False
     
+    except ServerNotFoundError:
+
+        print("\u001b[31mProbably, there is no internet connection.\u001b[0m")
+
+        return False
+    
 
     except Exception as exc:
+
         print(f"\n\u001b[31mException: {exc}\u001b[0m")
 
         return False
