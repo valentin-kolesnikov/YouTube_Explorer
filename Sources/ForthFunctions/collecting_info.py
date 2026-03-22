@@ -1,0 +1,146 @@
+from googleapiclient.errors import HttpError
+
+from Patterns.errors import http_error, WinError
+
+
+
+
+
+
+
+
+def collect_other_playlists(youtube, keywords, ageAfter, ageBefore, maximum, which_order):
+    try:
+        request = youtube.search().list(
+            q=keywords,
+            publishedBefore=ageBefore,
+            order=which_order,
+            publishedAfter=ageAfter,
+            part="snippet",
+            type="playlist",
+            maxResults=maximum,
+        ).execute()
+
+        playlist_ids = []
+
+        for item in request["items"]:
+            playlist_id = item["id"]["playlistId"]
+            playlist_ids.append(playlist_id)
+
+        return playlist_ids, False
+
+
+    except HttpError as exc:
+        
+        http_error(exc)
+        
+        return {}, True
+    
+    
+    except OSError as exc:
+
+        WinError(exc)
+
+        return {}, True
+    
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
+
+        return {}, True
+    
+
+
+
+
+
+def collect_playlist_details(youtube, playlist_ids):
+    try:
+        statrequest = youtube.playlists().list(
+            part="snippet,contentDetails,status",
+            id=",".join(playlist_ids)
+        ).execute()
+
+        return statrequest
+    
+    except HttpError as exc:
+
+        http_error(exc)
+
+        return {}, True
+    
+    except OSError as exc:
+
+        WinError(exc)
+
+        return {}, True
+    
+    except Exception:
+        
+        print("Probably, YouTube has problems with submitted objects")
+
+        return {}, True
+    
+
+
+# def collect_videos_of_playlist(youtube, playlist_URL, amount):
+#     try:
+#         playlist_request = youtube.playlistItem().list(
+#             part="snippet",
+#             playlistId=playlist_URL,
+#             maxResults=amount,
+            
+#         )
+
+        
+
+#     except HttpError as exc:
+
+#         http_error(exc)
+
+#         return {}, True
+    
+#     except OSError as exc:
+
+#         WinError(exc)
+
+#         return {}, True
+    
+#     except Exception:
+        
+#         print("Probably, YouTube has problems with submitted objects")
+
+#         return {}, True
+
+
+
+    
+
+# def collect_your_playlists(youtube):
+#     your_playlist_request = youtube.playlist().list(
+#         part="snippet,status", #status для privacyStatus
+#         mine=True
+#     ).execute()
+
+
+
+
+# def collect_videos(youtube, OAuth2youtube, rating):
+#     try:
+#         requests = youtube.videos().list(
+#             part="snippet",
+#             myRating=rating,
+
+#         )
+
+#     except HttpError as exc:
+        
+#         http_error(exc)
+        
+#         return 
+
+#     except OSError as exc:
+
+#         WinError(exc)
+
+#         return 
