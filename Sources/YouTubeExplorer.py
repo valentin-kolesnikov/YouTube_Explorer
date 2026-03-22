@@ -8,13 +8,11 @@ from Modes.YouTubePlaylistExplorer import launcherPlaylists
 
 from Modes.YouTubeSubtitlesExplorer import launcherSubtitles
 
-from Modes.YouTubeOneVideoInfoExplorer import launcherInfo
+from Modes.YouTubeOneVideoExplorer import launcherInfo
 
 from Modes.YouTubeExplorerLicense import launcherNOTICE, launcherLICENSE
 
 from Modes.YouTubeASCIIExplorer import launcherASCII
-
-from Patterns.check_connection import internet_available
 
 from Starter.KeyExplorer import youtube_api_key, window_title
 
@@ -37,20 +35,17 @@ if __name__ == "__main__":
         try:
             window_title("YouTube Explorer")
 
-            internet_available()
-
             youtube, exc_OAuth2 = youtube_OAuth2()
             if exc_OAuth2:
-
                 youtube = youtube_api_key()
 
             if not test_quota(youtube):
-                input("Press Enter to exit...")
+                input("\nPress Enter to exit...")
                 exit(1)
 
             while True:
                 print("\033[H\033[J", end="") #clear console
-                print("=========  v1.0.0  =========\n")
+                print("==========  v1.0.0  ==========\n")
 
                 questionist = input(
                     "1. Comments\n" \
@@ -61,27 +56,28 @@ if __name__ == "__main__":
                     "6. One Video Info\n" \
                     "7. LICENSE\n" \
                     "8. NOTICE\n" \
+                    # "9. ASCII Art" \
                     "0. Exit\n\n" \
                     "Enter the number: ")
                 
                 while True:
-                    if questionist == '1':
+                    if questionist == "1":
                         launcherComments(youtube)
                         break
 
-                    elif questionist == '2':
+                    elif questionist == "2":
                         launcherVideos(youtube)
                         break
 
-                    elif questionist == '3':
+                    elif questionist == "3":
                         launcherChannels(youtube)
                         break
 
                     elif questionist == "4":
-                        launcherPlaylists(youtube, exc_OAuth2)
+                        launcherPlaylists(youtube, exc_OAuth2) 
                         break
 
-                    elif questionist == '5':
+                    elif questionist == "5":
                         launcherSubtitles(youtube)
                         break
 
@@ -101,7 +97,7 @@ if __name__ == "__main__":
                         launcherASCII()
                         break
 
-                    elif questionist == '0':
+                    elif questionist == "0":
                         exit(0)
 
                     else:

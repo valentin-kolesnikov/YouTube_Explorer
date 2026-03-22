@@ -14,6 +14,8 @@ from os import path, makedirs
 
 import sys
 
+from Patterns.check_connection import internet_available
+
 
 
 
@@ -56,30 +58,39 @@ def credentials(client_file):
 
 
 def youtube_OAuth2():
-    try:
-        file = glob(path.join(key_folder, "client_secret_*.json"))
-        if not file:
+    while True:
+        try:
+            file = glob(path.join(key_folder, "client_secret_*.json"))
+            if not file:
 
-            raise FileNotFoundError
-        client_file = file[0] 
+                raise FileNotFoundError
+            client_file = file[0] 
+            
+
+            credits = credentials(client_file)
+
+
+            OAuth2youtube = build("youtube", "v3", credentials=credits)
+
+            return OAuth2youtube, False
         
+        
+        except FileNotFoundError:
 
-        credits = credentials(client_file)
+            # the error message won't be displayed in the terminal, remember it
+
+            return {}, True
+        
+        
+        except TransportError:
+
+            internet_available()
 
 
-        OAuth2youtube = build("youtube", "v3", credentials=credits)
+        except Exception as exc:
 
-        return OAuth2youtube, False
-    
-    
-    except FileNotFoundError:
+            print(f"\n\u001b[31mException: {exc}\u001b[0m")
 
-        # the error message won't be displayed in the terminal, remember it
+            return False
 
-        return {}, True
-    
-    
-    except TransportError:
-
-        input("\u001b[31mProbably, there is no internet connection.\u001b[0m\n\nPress Enter to exit...")
-        exit(1)
+        

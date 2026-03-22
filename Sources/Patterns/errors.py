@@ -27,10 +27,10 @@ def WinError(exc):
         print("\n\u001b[31mInternet connection is probably unavailable.\u001b[0m")
 
     exit_continue = input("\n\u001b[31m1. Retry connection\n2. Exit\n\nYour choice:\u001b[0m ")
-
+    
     while True:
         if exit_continue == "1":
-            break
+            return True
         
         elif exit_continue == "2":
             exit(1)
