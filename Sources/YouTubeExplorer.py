@@ -44,7 +44,7 @@ if __name__ == "__main__":
                 exit(1)
 
             while True:
-                print("\033[H\033[J", end="") #clear console
+                print("\033[H\033[J", end="")
                 print("==========  v1.0.0  ==========\n")
 
                 questionist = input(
@@ -62,38 +62,47 @@ if __name__ == "__main__":
                 
                 while True:
                     if questionist == "1":
+                        print("\033[H\033[J", end="")
                         launcherComments(youtube)
                         break
 
                     elif questionist == "2":
+                        print("\033[H\033[J", end="")
                         launcherVideos(youtube)
                         break
 
                     elif questionist == "3":
+                        print("\033[H\033[J", end="")
                         launcherChannels(youtube)
                         break
 
                     elif questionist == "4":
+                        print("\033[H\033[J", end="")
                         launcherPlaylists(youtube, exc_OAuth2) 
                         break
 
                     elif questionist == "5":
+                        print("\033[H\033[J", end="")
                         launcherSubtitles(youtube)
                         break
 
                     elif questionist == "6":
+                        print("\033[H\033[J", end="")
                         launcherInfo(youtube)
                         break
 
                     elif questionist == "7":
+                        print("\033[H\033[J", end="")
                         launcherLICENSE()
                         break
 
                     elif questionist == "8":
+                        print("\033[H\033[J", end="")
                         launcherNOTICE()
                         break
 
                     elif questionist == "9":
+                        print("\033[H\033[J", end="")
                         launcherASCII()
                         break
 
