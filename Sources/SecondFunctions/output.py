@@ -6,7 +6,7 @@ from datetime import datetime
 
 def output_videos(results, statrequest):
     number = 0
-    for item in statrequest["items"]:
+    for item in statrequest:
         title = item["snippet"]["title"]
         video_id = item["id"]
         published_at = item["snippet"]["publishedAt"]
