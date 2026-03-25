@@ -32,8 +32,6 @@ def collection_of_playlists(youtube, exc_OAuth2):
             output_playlists(statrequest)
             
             input("\nPress Enter to return...")
-
-            print("\033[H\033[J", end="")
             return
         
 
@@ -42,10 +40,10 @@ def collection_of_playlists(youtube, exc_OAuth2):
         
         #soon
         
-        # elif search_playlist == "2" and not exc_OAuth2:
-        #     collect_your_playlists(youtube)
-        # OAuth needed  playlistItems.list() - поиск по плейлисту 
+        elif search_playlist == "2" and not exc_OAuth2:
+            collect_your_playlists(youtube)
+        #OAuth needed  playlistItems.list() - поиск по плейлисту 
         # playlists.list() - для нахождения имен имеющихся плейлистов playlist_id = input("Enter the playlist's URL: ")
 
-        # else:
-        #     search_playlist = input("Enter again: ")
+        else:
+            search_playlist = input("Enter again: ")

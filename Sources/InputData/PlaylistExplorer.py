@@ -7,7 +7,9 @@ from re import search
 
 
 def start_extension(exc_OAuth2):
-    print("\n1. Collecting playlists\n" \
+    print("\033[H\033[J", end="")
+    
+    print("1. Collecting playlists\n" \
     "2. Collecting videos from the playlist")
 
     if not exc_OAuth2:
@@ -26,7 +28,7 @@ def start_extension(exc_OAuth2):
 
 
 def playlist_URL_extract():
-    playlist_URL = input("Enter the playlist URL with PL (possible separately): ")
+    playlist_URL = input('Enter the playlist URL with "PL": ')
     
     while True:
         playlist_URL = playlist_URL.strip()
@@ -35,20 +37,3 @@ def playlist_URL_extract():
             return for_id.group(1)
 
         playlist_URL = input("\nEnter again: ")
-
-
-
-
-def filter_playlist_videos():
-    amount = input("Enter the amount of videos to collect: ")
-
-    while True:
-        if amount.isdigit() and 0 < int(amount):
-            amount = 1
-            break
-        
-        else:
-            amount = input("\nEnter again: ")
-
-    return amount
-

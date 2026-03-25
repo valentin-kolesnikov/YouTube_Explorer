@@ -83,34 +83,47 @@ def collect_playlist_details(youtube, playlist_ids):
     
 
 
-# def collect_videos_of_playlist(youtube, playlist_URL, amount):
-#     try:
-#         playlist_request = youtube.playlistItem().list(
-#             part="snippet",
-#             playlistId=playlist_URL,
-#             maxResults=amount,
-            
-#         )
+def collect_videos_of_playlist(youtube, playlist_URL):
+    try:
+        video_ids = []
+        next_page_token = None
 
-        
+        while True:
+            playlist_request = youtube.playlistItems().list(
+                part="contentDetails",
+                playlistId=playlist_URL,
+                maxResults=50,
+                pageToken=next_page_token
+            ).execute()
 
-#     except HttpError as exc:
+            for item in playlist_request["items"]:
+                video_ids.append(item["contentDetails"]["videoId"])
 
-#         http_error(exc)
+            next_page_token = playlist_request.get("nextPageToken")
 
-#         return {}, True
+            if not next_page_token:
+                break
+
+        return video_ids, False
+
+
+    except HttpError as exc:
+
+        http_error(exc)
+
+        return {}, True
     
-#     except OSError as exc:
+    except OSError as exc:
 
-#         WinError(exc)
+        WinError(exc)
 
-#         return {}, True
+        return {}, True
     
-#     except Exception:
+    except Exception:
         
-#         print("Probably, YouTube has problems with submitted objects")
+        print("Probably, YouTube has problems with submitted objects")
 
-#         return {}, True
+        return {}, True
 
 
 
