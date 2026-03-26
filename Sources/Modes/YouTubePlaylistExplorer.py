@@ -10,7 +10,7 @@ from PlaylistExplorer_InputData.Videos_of_Playlists import videos_of_playlists
 
 def launcherPlaylists(youtube, exc_OAuth2):
     while True:
-        question = start_extension(exc_OAuth2)
+        question = start_extension()
         if question == "0":
             return
 
@@ -26,7 +26,7 @@ def launcherPlaylists(youtube, exc_OAuth2):
                 break
             
             else:
-                question = input("Enter again: ")
+                question = input("\nEnter again: ")
 
 
         

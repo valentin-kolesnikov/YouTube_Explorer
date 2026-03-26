@@ -6,15 +6,12 @@ from re import search
 
 
 
-def start_extension(exc_OAuth2):
+def start_extension():
     print("\033[H\033[J", end="")
     
     print("1. Collecting playlists\n" \
-    "2. Collecting videos from the playlist")
-
-    if not exc_OAuth2:
-        print("3. Collecting private playlists")
-    print("0. Go back to the start menu")
+    "2. Collecting videos from the playlist\n" \
+    "0. Go back to the start menu")
 
     question = input("\nChoose the number: ")
     

@@ -33,6 +33,7 @@ def collection_of_playlists(youtube, exc_OAuth2):
 
         if not exc_OAuth2:
             print("2. Your playlists")
+        print("0. Go back to the previous menu")
 
         search_playlist = input("\nChoose the number: ")
 
@@ -70,9 +71,14 @@ def collection_of_playlists(youtube, exc_OAuth2):
 
             videos_from_playlist(youtube)
             return
+        
+
+        elif search_playlist == "0":
+            print("\033[H\033[J", end="")
+            return
 
     
         else:
-            search_playlist = input("Enter again: ")
+            search_playlist = input("\nEnter again: ")
 
 
