@@ -6,7 +6,7 @@ from re import search
 
 def get_info():
 
-    NameId = input("\nEnter the link with UC... or @... to the channel (possible separately): ")
+    NameId = input("Enter the link with UC... or @... to the channel (possible separately): ")
 
     while True:
         NameId = NameId.strip()

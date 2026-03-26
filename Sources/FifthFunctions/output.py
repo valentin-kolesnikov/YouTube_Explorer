@@ -21,8 +21,11 @@ def transcript_fetch(transcript_subtitles):
     return full_text
 
 def output(transcript_subtitles, available_lang, full_text):
-    print(f"{transcript_subtitles.video_id}\n"
-        f"{transcript_subtitles.language}, {transcript_subtitles.language_code}\n"
-        f"Available languages: {available_lang}\n"
-        f"Transcript:"
-        f"\n\n\n{full_text}")
+    
+    print(f"Video URL: https://www.youtube.com/watch?v={transcript_subtitles.video_id}\n"
+        f"\nCurrent: {transcript_subtitles.language}, {transcript_subtitles.language_code}\n"
+        f"\nAvailable languages: {available_lang}\n"
+        "\nTranscript:\n"
+        "================================================"
+        f"\n\n{full_text}"
+        "\n\n================================================")

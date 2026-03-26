@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
                     elif questionist == "5":
                         print("\033[H\033[J", end="")
-                        launcherSubtitles(youtube)
+                        launcherSubtitles()
                         break
 
                     elif questionist == "6":

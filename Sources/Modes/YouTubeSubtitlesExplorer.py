@@ -22,7 +22,7 @@ from InputData.SubtitlesExplorer import language_needed, view_of_text
 
 
 
-def launcherSubtitles(youtube):
+def launcherSubtitles():
     video_id = youtube_id_finder()
     try:
         video_list = YouTubeTranscriptApi().list(video_id)
@@ -57,7 +57,6 @@ def launcherSubtitles(youtube):
     manually_generated = view_of_text()
 
     transcript_subtitles, exc = transcript_fetcher(video_list, languages_list, manually_generated)
-    
     if exc:
         print("\033[H\033[J", end="")
         return
@@ -70,9 +69,9 @@ def launcherSubtitles(youtube):
 
     except OSError as exc:
 
-         WinError(exc)
+        WinError(exc)
 
-         return
+        return
     
 
     print("\033[H\033[J", end="")

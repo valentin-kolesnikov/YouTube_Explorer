@@ -6,7 +6,7 @@ from re import search
 
 
 def youtube_id_finder():
-    url = input("\nEnter the url: ")
+    url = input("Enter the url: ")
 
     while True:
         pattern = r"(?:v=|\/)([0-9A-Za-z_-]{11})"
