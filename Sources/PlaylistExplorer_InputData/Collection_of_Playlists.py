@@ -1,4 +1,6 @@
-from ForthFunctions.collecting_info import collect_other_playlists, collect_playlist_details #, collect_your_playlists
+from ForthFunctions.collecting_info import collect_other_playlists, collect_playlist_details, collect_your_playlists
+
+from PlaylistExplorer_InputData.Videos_of_Playlists import videos_of_playlists
 
 from ForthFunctions.output import output_playlists
 
@@ -7,9 +9,27 @@ from Patterns.Search_Engine import search_engine
 
 
 
+
+
+
+
+
+
+def videos_from_playlist(youtube):
+    go_to_another_part = input("\n\nDo you want to analyze the certain playlist? (y/n): ")
+
+    if go_to_another_part.lower() == "y":
+        print("")
+        videos_of_playlists(youtube)
+
+    elif go_to_another_part.lower() == "n":
+        return
+
+
+
 def collection_of_playlists(youtube, exc_OAuth2):
     while True:
-        print("\n1. Other's playlists")
+        print("1. Other's playlists")
 
         if not exc_OAuth2:
             print("2. Your playlists")
@@ -25,25 +45,34 @@ def collection_of_playlists(youtube, exc_OAuth2):
                 print("\033[H\033[J", end="")
                 return
             
-            statrequest = collect_playlist_details(youtube, playlist_ids)
-            
+            statrequest, exc = collect_playlist_details(youtube, playlist_ids)
+            if exc:
+                print("\033[H\033[J", end="")
+                return
+
             print("\033[H\033[J", end="")
 
             output_playlists(statrequest)
             
-            input("\nPress Enter to return...")
+            videos_from_playlist(youtube)
             return
         
 
-
-        
-        
-        #soon
-        
         elif search_playlist == "2" and not exc_OAuth2:
-            collect_your_playlists(youtube)
-        #OAuth needed  playlistItems.list() - поиск по плейлисту 
-        # playlists.list() - для нахождения имен имеющихся плейлистов playlist_id = input("Enter the playlist's URL: ")
+            statrequest, exc = collect_your_playlists(youtube)
+            if exc:
+                print("\033[H\033[J", end="")
+                return
 
+            print("\033[H\033[J", end="")
+
+            output_playlists(statrequest)
+
+            videos_from_playlist(youtube)
+            return
+
+    
         else:
             search_playlist = input("Enter again: ")
+
+

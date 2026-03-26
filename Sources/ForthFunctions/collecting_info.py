@@ -61,7 +61,7 @@ def collect_playlist_details(youtube, playlist_ids):
             id=",".join(playlist_ids)
         ).execute()
 
-        return statrequest
+        return statrequest, False
     
     except HttpError as exc:
 
@@ -129,31 +129,43 @@ def collect_videos_of_playlist(youtube, playlist_URL):
 
     
 
-# def collect_your_playlists(youtube):
-#     your_playlist_request = youtube.playlist().list(
-#         part="snippet,status", #status для privacyStatus
-#         mine=True
-#     ).execute()
+def collect_your_playlists(youtube):
+    try:
+        statrequest = []
+        next_page_token = None
 
+        while True:
+            mine_playlists = youtube.playlists().list(
+                part="snippet,contentDetails,status",
+                maxResults=50,
+                pageToken=next_page_token,
+                mine=True
+            ).execute()
 
+            for item in mine_playlists["items"]:
+                statrequest.append(item)
 
+            next_page_token = mine_playlists.get("nextPageToken")
 
-# def collect_videos(youtube, OAuth2youtube, rating):
-#     try:
-#         requests = youtube.videos().list(
-#             part="snippet",
-#             myRating=rating,
+            if not next_page_token:
+                break
 
-#         )
+        return {"items": statrequest}, False
 
-#     except HttpError as exc:
+    except HttpError as exc:
+
+        http_error(exc)
+
+        return {}, True
+    
+    except OSError as exc:
+
+        WinError(exc)
+
+        return {}, True
+    
+    except Exception:
         
-#         http_error(exc)
-        
-#         return 
+        print("Probably, YouTube has problems with submitted objects")
 
-#     except OSError as exc:
-
-#         WinError(exc)
-
-#         return 
+        return {}, True

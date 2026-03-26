@@ -22,8 +22,8 @@ def output_playlists(statrequest):
         print(
             f"\n{number}.\n"
             f"{title}\n"
-            f"https://www.youtube.com/playlist?list={playlist_id}\n"
+            f"Playlist URL: https://www.youtube.com/playlist?list={playlist_id}\n"
             f"Privacy status: {status}; Videos: {itemCount}\n"
             f"{formatted_date}\n"
             f"{channelName}\n"
-            f"Channel Link: https://www.youtube.com/channel/{channelId}")
+            f"Channel URL: https://www.youtube.com/channel/{channelId}")
