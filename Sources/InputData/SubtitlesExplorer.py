@@ -6,8 +6,11 @@ def language_needed():
     language = input("\nEnter the desired language. Enter as (en; ru; ja...): ")
 
     while True:
+        if not language.isalpha():
+            language = input("\nEnter it again in letters: ")
+            continue
         
-        if len(language) != 2 and not re.fullmatch(r"[A-Za-z]+", language):
+        if not fullmatch(r"[A-Za-z]+", language):
             language = input("\nEnter it again in English: ")
             continue
 
@@ -15,9 +18,8 @@ def language_needed():
             language = input("\nEnter again: ")
             continue
 
-        if not fullmatch(r"[A-Za-z]+", language):
-            language = input("\nEnter it again in English: ")
-            continue
+        
+
 
                 
         languages.append(language.lower())

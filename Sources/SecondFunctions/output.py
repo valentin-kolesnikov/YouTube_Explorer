@@ -6,7 +6,7 @@ from datetime import datetime
 
 def output_videos(results, statrequest):
     number = 0
-    for item in statrequest:
+    for item in statrequest["items"]:
         title = item["snippet"]["title"]
         video_id = item["id"]
         published_at = item["snippet"]["publishedAt"]
@@ -26,8 +26,8 @@ def output_videos(results, statrequest):
         print(
             f"\n{number}.\n"
             f"{title}\n"
-            f"https://www.youtube.com/watch?v={video_id}\n"
+            f"Video URL: https://www.youtube.com/watch?v={video_id}\n"
             f"{views} views; {likes} likes; {dislikes} dislikes; {comments} comments\n"
             f"{formatted_date}\n"
             f"{channelName}\n"
-            f"Channel Link: https://www.youtube.com/channel/{channelId}")
+            f"Channel URL: https://www.youtube.com/channel/{channelId}")

@@ -22,7 +22,7 @@ def collect_stats(youtube, video_ids):
 
             statrequest.extend(statrequest_videos["items"])
 
-        return statrequest, False
+        return {"items": statrequest}, False
     
     
     except HttpError as exc:
