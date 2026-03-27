@@ -42,6 +42,3 @@ def collect_stats(youtube, video_ids):
         print("Probably, YouTube has problems with submitted objects")
 
         return {}, True
-        
-
-    

@@ -12,10 +12,10 @@ def output_channel_info(result, statrequests, get_answers, snistics):
     print("-" * 50)
 
     if get_answers == "y":
-        print("Your received videos:\n")
+        print("Your received videos:")
         
     elif get_answers == "n":
-        print("Three videos from the newest:\n")
+        print("Three videos from the newest:")
 
     number = 0
     for item in statrequests["items"]:
@@ -37,4 +37,4 @@ def output_channel_info(result, statrequests, get_answers, snistics):
             f"{title_video}\n"
             f"https://www.youtube.com/watch?v={videos_id}\n"
             f"{ch_views} views; {ch_likes} likes; {ch_dislikes} dislikes; {ch_comments} comments\n"
-            f"{vformatted_date}\n")
+            f"{vformatted_date}")
