@@ -1,12 +1,14 @@
 from InputData.ChannelExplorer import get_info, get_answer
 
-from ThirdFunctions.collecting_info import collect_channel_info, search_channel_videos, collect_channel_stats_videos, collect_popular_videos, collect_statistics
+from ThirdFunctions.collecting_info import collect_channel_info, search_channel_videos, collect_popular_videos
 
 from ThirdFunctions.output import output_channel_info
 
 from Patterns.Search_Engine import search_engine
 
 from Patterns.check_connection import internet_available
+
+from Patterns.collectingStats import collect_stats
 
 from Patterns.asyncRYD import ryd
 
@@ -34,14 +36,14 @@ def launcherChannels(youtube):
 
         internet_available()
 
-        video_Ids, exc = search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension)
+        video_ids, exc = search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension)
         if exc:
             print("\033[H\033[J", end="")
             return
         
-        result = run(ryd(video_Ids))
+        result = run(ryd(video_ids))
 
-        statrequests, exc = collect_channel_stats_videos(youtube, video_Ids)
+        statrequests, exc = collect_stats(youtube, video_ids)
         if exc:
             print("\033[H\033[J", end="")
             return
@@ -50,18 +52,21 @@ def launcherChannels(youtube):
 
         output_channel_info(result, statrequests, get_answers, snistics)
 
+
+
+
     elif get_answers == "n":
 
         internet_available()
 
-        videoIds, exc = collect_popular_videos(youtube, uploads_videos)
+        video_ids, exc = collect_popular_videos(youtube, uploads_videos)
         if exc:
             print("\033[H\033[J", end="")
             return
 
-        result = run(ryd(videoIds))
+        result = run(ryd(video_ids))
 
-        statrequests, exc = collect_statistics(youtube, videoIds)
+        statrequests, exc = collect_stats(youtube, video_ids)
         if exc:
             print("\033[H\033[J", end="")
             return

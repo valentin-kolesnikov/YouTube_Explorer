@@ -8,24 +8,39 @@ from Patterns.errors import http_error, WinError
 
 def collect_searches(youtube, keywords, region, ageAfter, ageBefore, duration, maximum, which_order, dimension):
     try:
-        request = youtube.search().list(
-            videoDimension=dimension,
-            q=keywords,
-            regionCode=region,
-            publishedBefore=ageBefore,
-            order=which_order,
-            publishedAfter=ageAfter,
-            videoDuration=duration,
-            part="snippet",
-            type="video",
-            maxResults=maximum,
-        ).execute()
-
         video_ids = []
+        next_page_token = None
 
-        for item in request["items"]:
-            videos = item["id"]["videoId"]
-            video_ids.append(videos)
+        while True:
+            remaining_results = maximum - len(video_ids)
+
+            if remaining_results <= 0:
+                break
+
+            current_max_results = min(remaining_results, 50)
+
+            request = youtube.search().list(
+                videoDimension=dimension,
+                q=keywords,
+                regionCode=region,
+                publishedBefore=ageBefore,
+                order=which_order,
+                publishedAfter=ageAfter,
+                videoDuration=duration,
+                part="snippet",
+                type="video",
+                maxResults=current_max_results,
+                pageToken=next_page_token
+            ).execute()
+
+            
+            for item in request["items"]:
+                video_ids.append(item["id"]["videoId"])
+            
+            next_page_token = request.get("nextPageToken")
+
+            if not next_page_token or len(video_ids) >= maximum:
+                break
 
         return video_ids, False
     

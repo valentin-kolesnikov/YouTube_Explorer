@@ -41,7 +41,6 @@ def collect_channel_info(youtube, for_id, for_handle):
             "videoCount": statistics.get("videoCount")
         }
 
-
         uploads_videos = request["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
         
 
@@ -78,29 +77,43 @@ def collect_channel_info(youtube, for_id, for_handle):
     
     
     
-def search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension):  #collect_searches is similar
+def search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension):
     try:
-        video_collection = youtube.search().list(
-            part="snippet",
-            channelId=snistics['channelId'],
-            q=keywords,
-            type="video",
-            maxResults=maximum,
-            videoDimension=dimension,
-            publishedBefore=ageBefore,
-            order=which_order,
-            publishedAfter=ageAfter,
-            videoDuration=duration,
-        ).execute()
+        video_ids = []
+        next_page_token = None
 
-        video_Ids = []
+        while True:
+            remaining_results = maximum - len(video_ids)
 
-        for item in video_collection["items"]:
-                videos = item["id"]["videoId"]
-                video_Ids.append(videos)
+            if remaining_results <= 0:
+                break
+
+            current_max_results = min(remaining_results, 50)
+            
+            video_collection = youtube.search().list(
+                part="snippet",
+                channelId=snistics['channelId'],
+                q=keywords,
+                type="video",
+                maxResults=current_max_results,
+                videoDimension=dimension,
+                publishedBefore=ageBefore,
+                order=which_order,
+                publishedAfter=ageAfter,
+                videoDuration=duration,
+                pageToken=next_page_token
+            ).execute()
+
+            for item in video_collection["items"]:
+                video_ids.append(item["id"]["videoId"])
+
+            next_page_token = video_collection.get("nextPageToken")
+
+            if not next_page_token or len(video_ids) >= maximum:
+                break
 
 
-        return video_Ids, False
+        return video_ids, False
     
 
     except HttpError as exc:
@@ -115,51 +128,24 @@ def search_channel_videos(youtube, snistics, keywords, ageAfter, ageBefore, dura
         WinError(exc)
 
         return {}, True
-    
 
-def collect_channel_stats_videos(youtube, video_Ids):
-    try:
-        statrequests = youtube.videos().list(
-            part="snippet,statistics",
-            id=",".join(video_Ids)
-        ).execute()
-        
-        return statrequests, False
-    
-
-    except HttpError as exc:
-
-        http_error(exc)
-
-        return {}, True
-    
-    except OSError as exc:
-
-        WinError(exc)
-
-        return {}, True
-    
-    except Exception:
-        print("\nProbably, YouTube has problems with submitted objects")
-
-        return {}, True
     
 
 def collect_popular_videos(youtube, uploads_videos):
     try:
+        video_ids = []
+
         collection = youtube.playlistItems().list(
             part="contentDetails",
             playlistId=uploads_videos,
-            maxResults=3
+            maxResults=4
         ).execute()
 
-        videoIds = []
         for item in collection["items"]:
-            videoId = item["contentDetails"]["videoId"]
-            videoIds.append(videoId)
+            video_ids.append(item["contentDetails"]["videoId"])
 
 
-        return videoIds, False
+        return video_ids, False
 
 
     except HttpError as exc:
@@ -178,33 +164,5 @@ def collect_popular_videos(youtube, uploads_videos):
     except Exception:
         
         print("Probably, YouTube has problems with submitted objects")
-
-        return {}, True
-    
-    
-def collect_statistics(youtube, videosIds):
-    try:
-        statrequests = youtube.videos().list(
-            part="snippet,statistics",
-            id=",".join(videosIds)
-        ).execute()
-
-        return statrequests, False
-    
-
-    except HttpError as exc:
-
-        http_error(exc)
-
-        return {}, True
-    
-    except OSError as exc:
-
-        WinError(exc)
-
-        return {}, True
-    
-    except Exception:
-        print("\nProbably, YouTube has problems with submitted objects")
 
         return {}, True

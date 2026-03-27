@@ -160,11 +160,8 @@ def search_engine(playlist_enabled):
         else:
             maximum = input("\nEnter the number: ")
             
-    maximum = int(maximum)
-    if maximum > 51:
-        maximum = 50
-        
-    elif maximum < 0:
+    maximum = int(maximum)  
+    if maximum < 0:
         maximum = 1
 
     return keywords, ageAfter, ageBefore, duration, maximum, which_order, dimension
