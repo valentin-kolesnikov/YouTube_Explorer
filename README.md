@@ -5,12 +5,16 @@
    <img src="https://img.shields.io/badge/Code_Editor-VS%20Code-blue" alt="Code Editor VS Code">
    <img src="https://img.shields.io/badge/Version-Pre--Release-purple" alt="Version Pre-Release">
    <img src="https://img.shields.io/badge/License-Apache--2.0-red" alt="License Apache-2.0">
-   <img src="https://img.shields.io/badge/Python-3.14.0-yellowblue" alt="Python 3.14.0">
+   <img src="https://img.shields.io/badge/Python-3.14+-yellowblue" alt="Python 3.14+">
 </p>
 
 ## <p align="center">English | <a href="README_RU.md">Русский</a></p>
 
 **YouTube Explorer** is a console-based Python tool for programmatic exploration of YouTube content using **YouTube Data API v3** (with OAuth 2.0 support), **Return YouTube Dislike API**, and **YouTube Transcript API**
+
+> [!CAUTION]
+> The original repository is only available in my [GitHub](https://github.com/valentin-kolesnikov/YouTube_Explorer) repository  
+> Clones, distributed on my behalf on other websites and **GitHub** repositories, are not my work
 
 It is designed for:
 
@@ -24,14 +28,19 @@ It is designed for:
 
 - [🗒️Table of Contents](#️table-of-contents)
 - [❗Requirements](#requirements)
+- [🌐How to download?](#how-to-download)
+  - [Releases](#releases)
+  - [Git](#git)
+  - [Linux](#linux)
 - [❓How to get the YouTube Data API v3 key?](#how-to-get-the-youtube-data-api-v3-key)
+- [🛡️ How to get OAuth 2.0 credentials?](#️-how-to-get-oauth-20-credentials)
 - [Core capabilities](#core-capabilities)
   - [🔑YouTube API key handling](#youtube-api-key-handling)
   - [🚪Quota inspection](#quota-inspection)
-  - [🛡️OAuth 2.0 Integration](#️oauth-20-integration)
   - [💌Comment Explorer](#comment-explorer)
   - [📹Video Explorer](#video-explorer)
   - [📈Channel Explorer](#channel-explorer)
+  - [🗂️Playlist Explorer](#️playlist-explorer)
   - [📄Subtitles Explorer](#subtitles-explorer)
   - [🔢Info Explorer](#info-explorer)
 - [⚙️ Functionality](#️-functionality)
@@ -52,6 +61,26 @@ To use YouTube Explorer, you need the following:
 
 Basic familiarity with command-line usage is recommended.
 
+# 🌐How to download?
+
+## Releases
+
+1. `Releases` → `YouTubeExplorer.zip`
+2. Extract the `.zip` folder
+3. `bin` → open `YouTubeExplorer.exe`
+
+The binary works on Windows, not on Linux without `Wine` (a compatibility layer capable of running Windows applications).
+
+## Git
+
+- `git clone https://github.com/valentin-kolesnikov/YouTube_Explorer`
+
+## Linux
+
+- `curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v0.9.0/YouTubeExplorer.zip`
+
+You download the repository with the code. You need to download `Python 3.10+`. It need more for Linux users, unfortunately.
+
 # ❓How to get the YouTube Data API v3 key?
 
 1. You need to follow [Google Cloud Console](https://console.cloud.google.com)
@@ -70,6 +99,38 @@ Basic familiarity with command-line usage is recommended.
 
 8. The end of the way! Just copy your API key and paste it into the Windows notepad or somewhere else.
 
+# 🛡️ How to get OAuth 2.0 credentials?
+
+- The application is designed to use **OAuth 2.0** as the primary authentication method
+- If OAuth client secrets are not found, the system switches to the **YouTube Data API Key** method without interrupting the user
+- There is a problem registering the application in OAuth 2, so we create credentials ourselves.
+
+How to set it up:
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com).
+
+2. Select the project you already created for your YouTube Data API v3 key.
+
+3. In the left column, click `OAuth consent screen`.
+
+4. Choose `External` as the User Type and click `Create`.
+
+5. Fill in the required fields: **App name**, **User support email**, and **Developer contact information** (you can just use your own email for all of these). Click `Save and Continue`.
+
+6. You can skip the **Scopes** page by clicking `Save and Continue`.
+
+7. On the **Test users** page, click `Add Users` and type in your own Google account email. Click `Save and Continue`.
+
+8. Now, click on `Credentials` in the left column again.
+
+9. At the top, click `Create credentials` → `OAuth client ID`.
+
+10. Select `Desktop app` as the Application type. You can leave the default name. Click `Create`.
+
+11. A window will pop up. Click `Download JSON` to save your credentials.
+
+12. The downloaded `.json` file must be placed in the `Keys` folder of the `bin` folder.
+
 # Core capabilities
 
 ## 🔑YouTube API key handling
@@ -82,12 +143,6 @@ Basic familiarity with command-line usage is recommended.
 
 - Detects current availability of the YouTube API quota
 - Stops execution if further requests are not possible
-
-## 🛡️OAuth 2.0 Integration
-
-- The application is designed to use **OAuth 2.0** as the primary authentication method
-- If OAuth client secrets are not found, the system switches to the **YouTube Data API Key** method without interrupting the user
-
 
 ## 💌Comment Explorer
 
@@ -125,12 +180,13 @@ Basic familiarity with command-line usage is recommended.
   - Handle (@...)
 - If necessary, you can search videos on the channel thanks to Video Explorer
 
-<!-- ## Playlist Explorer
+## 🗂️Playlist Explorer
 
-- Get details about a playlist, including the total number of videos
-- you can find videos in the certain playlist thanks to Video Explorer
-
--->
+- Search for playlists using keywords, or securely load **your own** playlists using OAuth 2.0
+- View basic playlist details, such as privacy status, total video count, and publication date
+- Easily extract all videos from any playlist by entering its URL (supports both `PL...` and `OL...` links)
+- Get detailed statistics for every video inside the playlist, complete with dislike counts
+- Analyze a playlist's video library right after finding it, without needing to go back to the main menu
 
 ## 📄Subtitles Explorer
 
@@ -145,28 +201,25 @@ Basic familiarity with command-line usage is recommended.
 
 # ⚙️ Functionality
 
-- **Authentication** — **OAuth 2.0** is prioritized for secure access. If OAuth credentials are not detected, the application uses the **YouTube Data API key** stored in `Key.bin`.
-- **Link parsing** — `video id`, `channel id` (UC...), and `handle` (@...) are automatically extracted from the links you enter.
-- **Search filters** — You can filter videos by `Region`, `Dimension` (2D or 3D), `Duration`, and `Date` (using the smart calendar).
-- **Channel search** — Unlike standard search, you can perform keyword searches specifically inside a channel's library.
-- **Smart Subtitles** — **YouTube Transcript API** is integrated. It looks for `manually created` subtitles first. If they are missing, it asks if you want `auto-generated` ones. 
-- **Dislikes** — **Return YouTube Dislike API** is integrated to show dislike counts mixed with official data.
-- **Comment filtering** — **Keywords** are used to filter comments and replies locally. The YouTube Data API does not do this filtering.
-- **Quota check** — A test request is made at the start to ensure your **YouTube API quota** is not exceeded before running.
+- **Authentication** — **OAuth 2.0** is prioritized for secure access. If OAuth credentials are not detected, the application uses the **YouTube Data API key** stored in `Key.bin`
+- **Link parsing** — `video id`, `channel id` (UC...), and `handle` (@...) are automatically extracted from the links you enter
+- **Search filters** — you can filter videos by `Region`, `Dimension` (2D or 3D), `Duration`, and `Date` (using the smart calendar)
+- **Channel search** — unlike standard search, you can perform keyword searches specifically inside a channel's library
+- **Smart Subtitles** — **YouTube Transcript API** is integrated. It looks for `manually created` subtitles first. If they are missing, it asks if you want `auto-generated` ones
+- **Dislikes** — **Return YouTube Dislike API** is integrated to show dislike counts mixed with official data
+- **Comment filtering** — **Keywords** are used to filter comments and replies locally. YouTube Data API does not do this filtering
+- **Quota check** — a test request is made at the start to ensure your **YouTube API quota** is not exceeded before running
+- **Automatic verification** — before making API requests, YouTube Explorer pings `google.com` to ensure your connection is active. If the connection lost, you can retry to connect
 
 # 🔧 What do I plan to make in the future?
 
 - [ ] The ability to save received comments and videos
-- [x] Explore the channels
-- [x] A more user-friendly, interactive command-line interface
-- [ ] Playlist Explorer
-- [x] Subtitles Explorer
 
 # 🖌️License
 
-YouTube Explorer is licensed under the Apache-2.0 license.
+YouTube Explorer is licensed under the `Apache-2.0 license`.
 
-Versions released before 22-01-2026 were licensed under the MIT License.
+Versions released before 22-01-2026 were licensed under the `MIT License`.
 
 Author: Valentin Kolesnikov  
 Original repository: [YouTube_Explorer](https://github.com/valentin-kolesnikov/YouTube_Explorer)
