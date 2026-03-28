@@ -3,7 +3,7 @@
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/Code_Editor-VS%20Code-blue" alt="Code Editor VS Code">
-   <img src="https://img.shields.io/badge/Version-Pre--Release-purple" alt="Version Pre-Release">
+   <img src="https://img.shields.io/badge/Version-1.0v-purple" alt="Version 1.0v">
    <img src="https://img.shields.io/badge/License-Apache--2.0-red" alt="License Apache-2.0">
    <img src="https://img.shields.io/badge/Python-3.14.0-yellowblue" alt="Python 3.14.0">
 </p>
@@ -49,6 +49,7 @@
 - [❤️ Участие в разработке](#️-участие-в-разработке)
   - [🤝 Как внести свой вклад](#-как-внести-свой-вклад)
   - [❓ Вопросы и ошибки](#-вопросы-и-ошибки)
+  - [Стремление](#стремление)
 
 # ❗ Требования  
 
@@ -229,3 +230,7 @@ YouTube Explorer распространяется под лицензией `Apa
 
 Буду рад вашим идеям по улучшению и новым функциям.  
 Сообщайте об ошибках через создание issue.
+
+## Стремление
+
+Возможно скоро я перестану обновлять YouTube Explorer. Мне нужно набраться опыта в разных областях. Я должен вырасти ещё больше!

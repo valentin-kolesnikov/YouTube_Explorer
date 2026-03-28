@@ -3,7 +3,7 @@
 </p>
 <p align="center">
    <img src="https://img.shields.io/badge/Code_Editor-VS%20Code-blue" alt="Code Editor VS Code">
-   <img src="https://img.shields.io/badge/Version-Pre--Release-purple" alt="Version Pre-Release">
+   <img src="https://img.shields.io/badge/Version-1.0v-purple" alt="Version 1.0v">
    <img src="https://img.shields.io/badge/License-Apache--2.0-red" alt="License Apache-2.0">
    <img src="https://img.shields.io/badge/Python-3.14+-yellowblue" alt="Python 3.14+">
 </p>
@@ -49,6 +49,7 @@ It is designed for:
 - [❤️Contributing](#️contributing)
   - [🤝How to contribute](#how-to-contribute)
   - [❓Issues](#issues)
+  - [Striving](#striving)
 
 # ❗Requirements  
 
@@ -73,11 +74,11 @@ The binary works on Windows, not on Linux without `Wine` (a compatibility layer 
 
 ## Git
 
-- `git clone https://github.com/valentin-kolesnikov/YouTube_Explorer`
+`git clone https://github.com/valentin-kolesnikov/YouTube_Explorer`
 
 ## Linux
 
-- `curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v0.9.0/YouTubeExplorer.zip`
+`curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v0.9.0/YouTubeExplorer.zip`
 
 You download the repository with the code. You need to download `Python 3.10+`. It need more for Linux users, unfortunately.
 
@@ -249,3 +250,7 @@ This attribution helps avoid confusion about authorship and is considered good o
 ## ❓Issues
 
 I will be glad to see your opinions and ideas for new features or improvements. Moreover, please report bugs. Just open an issue and surprise me!
+
+## Striving
+
+Probably soon I will stop updating YouTube Explorer. I need to gain experience in different areas. I must grow even more!
