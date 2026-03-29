@@ -14,9 +14,14 @@
 
 > [!CAUTION]
 > The original repository is only available in my [GitHub](https://github.com/valentin-kolesnikov/YouTube_Explorer) repository  
-> Clones, distributed on my behalf on other websites and **GitHub** repositories, are not my work
+> Clones, distributed on my behalf on other websites and **GitHub** repositories, are not my work.
 
-It is designed for:
+> [!WARNING]
+> Antivirus software reacts to the app as a potentially unwanted app. This is clearly an error.  
+> All materials used for the app are stored in the public repository.  
+> As a developer, I have no desire to harm other users. You can always contact me via email for such issues.
+
+YouTube Explorer is designed for:
 
 - Working within YouTube API quota limits
 - Retrieving and filtering comments
@@ -49,7 +54,6 @@ It is designed for:
 - [❤️Contributing](#️contributing)
   - [🤝How to contribute](#how-to-contribute)
   - [❓Issues](#issues)
-  - [Striving](#striving)
 
 # ❗Requirements  
 
@@ -250,7 +254,7 @@ This attribution helps avoid confusion about authorship and is considered good o
 ## ❓Issues
 
 I will be glad to see your opinions and ideas for new features or improvements. Moreover, please report bugs. Just open an issue and surprise me!
+ 
+<!-- ## Striving
 
-## Striving
-
-Probably soon I will stop updating YouTube Explorer. I need to gain experience in different areas. I must grow even more!
+Probably soon I will stop updating YouTube Explorer. I need to gain experience in different areas. I must grow even more! -->
