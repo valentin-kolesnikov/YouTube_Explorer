@@ -9,12 +9,12 @@ def count_keys(comments, search_terms):
 
     print(f"Total comments: {amount_comments}\n")
     for kw, count in counts.items():
-        print(f"{kw}: {count}")
+        print(f"{kw}: {count}\n")
 
     return amount_comments
     
 def number_comments(comments, channel):
-    number = input("\nHow many comments do you need?: ")
+    number = input("How many comments do you need?: ")
     
     while True:
         if number.isdigit():
