@@ -53,6 +53,7 @@ YouTube Explorer is designed for:
 - [🖌️License](#️license)
 - [❤️Contributing](#️contributing)
   - [🤝How to contribute](#how-to-contribute)
+  - [💰Donations](#donations)
   - [❓Issues](#issues)
 
 # ❗Requirements  
@@ -195,7 +196,9 @@ How to set it up:
 
 ## 📄Subtitles Explorer
 
-- **Subtitles Explorer** makes extracting text from videos effortless and flexible. You simply enter the two-letter language codes, such as `en` or `ru`
+**Subtitles Explorer** makes extracting text from videos effortless and flexible
+
+- You enter the two-letter language codes, such as `en` or `ru`
 - It gives you the choice between `manually created` subtitles for better accuracy or `auto-generated` transcripts. The system is designed to handle missing data intelligently
 - If your preferred transcript type is not available, it will not just show an error and stop. Instead, it detects the issue and offers the alternative version immediately, ensuring you can still retrieve the content you are looking for.
 
@@ -250,6 +253,10 @@ This attribution helps avoid confusion about authorship and is considered good o
 2. Create a branch for your change.
 3. Submit a pull request with a clear description.
 4. Make sure your changes are well documented.
+
+## 💰Donations
+
+If you really want to support me, here is the link: [`DonationAlerts`](https://www.donationalerts.com/r/valera_koleso)
 
 ## ❓Issues
 
