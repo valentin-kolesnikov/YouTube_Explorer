@@ -46,10 +46,11 @@ def youtube_api_key():
             api_key = input("\nThis is not the YouTube API key. Try entering the API key again: ")
         memory.save_key(api_key)
 
-    youtube = build('youtube', 'v3', developerKey=api_key, cache_discovery=False)
+    youtube = build('youtube', 'v3', developerKey=api_key, static_discovery=False)
     
     return youtube
 
 def window_title(title):
-    sys.stdout.write(f"\33]0;{title}\a")
-    sys.stdout.flush()
+    if sys.stdout.isatty():
+        sys.stdout.write(f"\33]0;{title}\a")
+        sys.stdout.flush()
