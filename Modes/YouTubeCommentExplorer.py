@@ -4,7 +4,7 @@ from InputData.CommentExplorer import youtube_filters
 
 from FirstFunctions.collecting_info import collect_comments, channel_name
 
-from FirstFunctions.output import count_keys, number_comments
+from FirstFunctions.output import count_keys, number_comments, save_docx
 
 from Patterns.check_connection import internet_available
 
@@ -32,11 +32,13 @@ def launcherComments(youtube):
     
     print("\033[H\033[J", end="")
 
-    amount_comments = count_keys(comments, search_terms)
+    amount_comments, counts = count_keys(comments, search_terms)
     if amount_comments == 0:
         input("\nPress Enter to return...")
         return
-
+    
     number_comments(comments, channel)
+
+    save_docx(comments, channel, counts, amount_comments, video_id)
 
     input("\n\nPress Enter to return...")
