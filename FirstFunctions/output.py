@@ -1,4 +1,6 @@
-import os
+from os import path, makedirs
+
+import sys
 
 from docx import Document
 
@@ -46,16 +48,21 @@ def save_docx(comments, channel, counts, amount_comments, video_id):
             return
         
         elif choice == "y":
-            youtube_folder = "YouTubeComments"
-            if not os.path.exists(youtube_folder):
-                os.makedirs(youtube_folder)
+            if getattr(sys, "frozen", False):
+                app_folder = path.dirname(sys.executable)
+            else:
+                app_folder = path.dirname(__file__)
 
-            full_path = os.path.join(youtube_folder, f"{video_id}.docx")
+
+            youtube_folder = path.join(app_folder, "YouTubeComments")
+            makedirs(youtube_folder, exist_ok=True)
+
+            full_path = path.join(youtube_folder, f"{video_id}.docx")
 
             counter = 0
-            while os.path.exists(full_path):
+            while path.exists(full_path):
                 counter += 1
-                full_path = os.path.join(youtube_folder, f"{video_id} ({counter}).docx")
+                full_path = path.join(youtube_folder, f"{video_id} ({counter}).docx")
                 
 
             doc = Document()
