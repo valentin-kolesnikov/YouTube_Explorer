@@ -1,3 +1,5 @@
+import os
+
 from docx import Document
 
 
@@ -44,23 +46,40 @@ def save_docx(comments, channel, counts, amount_comments, video_id):
             return
         
         elif choice == "y":
+            youtube_folder = "YouTubeComments"
+            if not os.path.exists(youtube_folder):
+                os.makedirs(youtube_folder)
+
+            full_path = os.path.join(youtube_folder, f"{video_id}.docx")
+
+            counter = 0
+            while os.path.exists(full_path):
+                counter += 1
+                full_path = os.path.join(youtube_folder, f"{video_id} ({counter}).docx")
+                
+
             doc = Document()
             doc.add_heading("Comment Report for YouTube", 0)
             
-            doc.add_heading(f"Channel ID: {channel}")
+            doc.add_paragraph(f"Channel ID: {channel}")
             doc.add_paragraph(f"Total comments found: {amount_comments}")
             
             doc.add_heading("Keyword Statistics:", level=1)
             for key_word, count in counts.items():
                 doc.add_paragraph(f"{key_word}: {count}", style='List Bullet')
                 
-            doc.add_heading("Selected Comments:\n", level=1)
+            doc.add_heading("Selected Comments:", level=1)
             for index, comment in enumerate(comments, 1):
                 doc.add_paragraph(f"{index}.\n{comment}")
                 doc.add_paragraph("-" * 20)
 
-            doc.save(f"{video_id}.docx")
-            print(f'\nFile "{video_id}.docx" saved successfully!')
+            doc.save(full_path)
+
+            if counter == 0:
+                print(f'\nFile "{video_id}.docx" saved successfully!')
+            else:
+                print(f'\nFile "{video_id} ({counter}).docx" saved successfully!')
+                
             return
 
         else:
