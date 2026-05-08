@@ -1,10 +1,10 @@
-from os import path, makedirs
-
-import sys
-
 from docx import Document
 
+from pathlib import Path
 
+from os import makedirs, path
+
+import sys
 
 
 
@@ -44,50 +44,46 @@ def number_comments(comments, channel):
 def save_docx(comments, channel, counts, amount_comments, video_id):
     choice = input("\n\nDo you want to save the comments in a DOCX file? (y/n): ").lower()
     while True:
-        if choice == "n":
-            return
+        if choice in ["y", "n"]:
+            break
+        choice = input("\nEnter again correctly (y/n): ").lower()
+    
+    if choice == "y":
+        if getattr(sys, 'frozen', False):
+            exe_path = Path(sys.executable).resolve()
+            app_folder = exe_path.parents[1]
         
-        elif choice == "y":
-            if getattr(sys, "frozen", False):
-                app_folder = path.dirname(sys.executable)
-            else:
-                app_folder = path.dirname(__file__)
-
-
-            youtube_folder = path.join(app_folder, "YouTubeComments")
-            makedirs(youtube_folder, exist_ok=True)
-
-            full_path = path.join(youtube_folder, f"{video_id}.docx")
-
-            counter = 0
-            while path.exists(full_path):
-                counter += 1
-                full_path = path.join(youtube_folder, f"{video_id} ({counter}).docx")
-                
-
-            doc = Document()
-            doc.add_heading("Comment Report for YouTube", 0)
-            
-            doc.add_paragraph(f"Channel ID: {channel}")
-            doc.add_paragraph(f"Total comments found: {amount_comments}")
-            
-            doc.add_heading("Keyword Statistics:", level=1)
-            for key_word, count in counts.items():
-                doc.add_paragraph(f"{key_word}: {count}", style='List Bullet')
-                
-            doc.add_heading("Selected Comments:", level=1)
-            for index, comment in enumerate(comments, 1):
-                doc.add_paragraph(f"{index}.\n{comment}")
-                doc.add_paragraph("-" * 20)
-
-            doc.save(full_path)
-
-            if counter == 0:
-                print(f'\nFile "{video_id}.docx" saved successfully!')
-            else:
-                print(f'\nFile "{video_id} ({counter}).docx" saved successfully!')
-                
-            return
-
         else:
-            choice = input("\nEnter again correctly (y/n): ").lower()
+            app_folder = Path(__file__).resolve().parents[1]
+
+
+        youtube_folder = path.join(app_folder, "YouTubeComments")
+        makedirs(youtube_folder, exist_ok=True)
+
+        full_path = path.join(youtube_folder, f"{video_id}.docx")
+
+        counter = 0
+        while path.exists(full_path):
+            counter += 1
+            full_path = path.join(youtube_folder, f"{video_id} ({counter}).docx")
+            
+
+        doc = Document()
+        doc.add_heading("Comment Report for YouTube", 0)
+        
+        doc.add_paragraph(f"Channel ID: {channel}")
+        doc.add_paragraph(f"Total comments found: {amount_comments}")
+        
+        doc.add_heading("Keyword Statistics:", level=1)
+        for key_word, count in counts.items():
+            doc.add_paragraph(f"{key_word}: {count}", style='List Bullet')
+            
+        doc.add_heading("Selected Comments:", level=1)
+        for index, comment in enumerate(comments, 1):
+            doc.add_paragraph(f"{index}.\n{comment}")
+            doc.add_paragraph("-" * 20)
+            
+
+        doc.save(full_path)
+        print(f'\nFile "{full_path}" saved successfully!')
+        return
