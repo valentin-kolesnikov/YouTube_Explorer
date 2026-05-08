@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
             while True:
                 print("\033[H\033[J", end="")
-                print("==========  v1.0.0  ==========\n")
+                print("==========  v1.1.0  ==========\n")
 
                 questionist = input(
                     "1. Comments\n" \
