@@ -84,7 +84,7 @@ YouTube Explorer предназначен для:
 
 ## Linux
 
-- `curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v0.9.0/YouTubeExplorer.zip`
+- `curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v1.0.0/YouTubeExplorer.zip`
 
 Вы устанавливаете репозиторий с кодом. Вам понадобится скачать `Python 3.10+`. Это нужно для пользователей Linux, к сожалению.
 
@@ -137,7 +137,8 @@ YouTube Explorer предназначен для:
 - Сортировка `по времени` или `по релевантности`  
 - Ограничение количества выводимых результатов  
 - Определение канала, на котором размещено видео  
-- Вывод причины ошибки при её возникновении  
+- Вывод причины ошибки при её возникновении 
+- НОВОЕ! Comment Explorer теперь может сохранять информацию в файлы `.docx`
 
 ## 📹 Video Explorer
 

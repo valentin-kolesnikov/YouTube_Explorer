@@ -49,7 +49,6 @@ YouTube Explorer is designed for:
   - [📄Subtitles Explorer](#subtitles-explorer)
   - [🔢Info Explorer](#info-explorer)
 - [⚙️ Functionality](#️-functionality)
-- [🔧 What do I plan to make in the future?](#-what-do-i-plan-to-make-in-the-future)
 - [🖌️License](#️license)
 - [❤️Contributing](#️contributing)
   - [🤝How to contribute](#how-to-contribute)
@@ -83,7 +82,7 @@ The binary works on Windows, not on Linux without `Wine` (a compatibility layer 
 
 ## Linux
 
-`curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v0.9.0/YouTubeExplorer.zip`
+`curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v1.0.0/YouTubeExplorer.zip`
 
 You download the repository with the code. You need to download `Python 3.10+`. It need more for Linux users, unfortunately.
 
@@ -158,6 +157,7 @@ How to set it up:
 - limit the number of output results
 - find out the channel's name where the video is hosted
 - Comment Explorer inform why an error occured if it is a cause
+- NEW! Comment Explorer can save the collected data in a `.docx` file
 
 ## 📹Video Explorer
 
@@ -209,7 +209,7 @@ How to set it up:
 
 # ⚙️ Functionality
 
-- **Authentication** — **OAuth 2.0** is prioritized for secure access. If OAuth credentials are not detected, the application uses the **YouTube Data API key** stored in `Key.bin`
+- **Authentication** — **OAuth 2.0** is prioritised for secure access. If OAuth credentials are not detected, the application uses the **YouTube Data API key** stored in `Key.bin`
 - **Link parsing** — `video id`, `channel id` (UC...), and `handle` (@...) are automatically extracted from the links you enter
 - **Search filters** — you can filter videos by `Region`, `Dimension` (2D or 3D), `Duration`, and `Date` (using the smart calendar)
 - **Channel search** — unlike standard search, you can perform keyword searches specifically inside a channel's library
@@ -218,10 +218,6 @@ How to set it up:
 - **Comment filtering** — **Keywords** are used to filter comments and replies locally. YouTube Data API does not do this filtering
 - **Quota check** — a test request is made at the start to ensure your **YouTube API quota** is not exceeded before running
 - **Automatic verification** — before making API requests, YouTube Explorer pings `google.com` to ensure your connection is active. If the connection lost, you can retry to connect
-
-# 🔧 What do I plan to make in the future?
-
-- [ ] The ability to save received comments and videos
 
 # 🖌️License
 
