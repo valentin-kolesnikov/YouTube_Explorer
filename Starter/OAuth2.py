@@ -10,7 +10,7 @@ from google.auth.exceptions import TransportError
 
 from glob import glob
 
-from os import path, makedirs
+from os import path, makedirs, remove
 
 import sys
 
@@ -61,9 +61,10 @@ def youtube_OAuth2():
     while True:
         try:
             file = glob(path.join(key_folder, "client_secret_*.json"))
-            if not file:
 
+            if not file:
                 raise FileNotFoundError
+
             client_file = file[0] 
             
 
@@ -91,6 +92,11 @@ def youtube_OAuth2():
 
             print(f"\n\u001b[31mException: {exc}\u001b[0m")
 
-            return False
+            remove(token_dir)
 
-        
+            input('''\nReview the error message.
+                  \nIf the issue is "Token has been expired", try to restart the application.
+                  \n\nPress Enter to continue...''')
+            print("\033[H\033[J", end="")
+
+            return {}, True
