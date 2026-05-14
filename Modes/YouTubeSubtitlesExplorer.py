@@ -8,7 +8,7 @@ from Patterns.errors import WinError
 
 from FifthFunctions.collecting_info import transcript_fetcher
 
-from FifthFunctions.output import available_languages, transcript_fetch, output
+from FifthFunctions.output import available_languages, transcript_fetch, output, save_docx
 
 from InputData.SubtitlesExplorer import language_needed, view_of_text
 
@@ -77,5 +77,7 @@ def launcherSubtitles():
     print("\033[H\033[J", end="")
 
     output(transcript_subtitles, available_lang, full_text)
+
+    save_docx(transcript_subtitles, available_lang, full_text)
 
     input("\n\nPress Enter to return...")
