@@ -3,30 +3,23 @@ from re import fullmatch
 
 def language_needed():
     languages = []
-    language = input("\nEnter the desired language. Enter as (en; ru; ja...): ")
+    language = input("\nEnter the desired language. Enter as (en, ru, ja): ").strip()
 
     while True:
-        if not language.isalpha():
-            language = input("\nEnter it again in letters: ")
-            continue
+        if language == "":
+            if not languages:
+                language = input("\nYou haven't entered any language. You need to enter one: ").strip()
+                continue
+            break
         
-        if not fullmatch(r"[A-Za-z]+", language):
-            language = input("\nEnter it again in English: ")
+        if not fullmatch(r"[A-Za-z]{2}", language):
+            language = input("\nEnter it again in English: ").strip()
             continue
-
-        if len(language) != 2:
-            language = input("\nEnter again: ")
-            continue
-
-        
-
-
                 
         languages.append(language.lower())
-
-        language = input("\nEnter more if you want (Press Enter to continue): ")
-        if language == "":
-            break
+        
+        language = input("\nEnter more if you want (Press Enter to continue): ").strip()
+        
 
     languages_list = list(dict.fromkeys(languages))
 
