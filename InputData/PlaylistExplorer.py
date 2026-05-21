@@ -6,22 +6,6 @@ from re import search
 
 
 
-def start_extension():
-    print("\033[H\033[J", end="")
-    
-    print("1. Collecting playlists\n" \
-    "2. Collecting videos from the playlist\n" \
-    "0. Go back to the start menu")
-
-    question = input("\nChoose the number: ")
-    
-    return question
-
-
-
-
-
-
 def playlist_URL_extract():
     playlist_URL = input('Enter the playlist URL with "PL" or "OL": ')
     
