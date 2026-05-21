@@ -1,0 +1,8 @@
+YouTube Explorer
+Version: 1.1.0
+A Python CLI tool for exploring and extracting YouTube content
+Language: Python
+License: GNU GPL-3.0
+This product includes software developed by Valentin Kolesnikov
+Original project: YouTube Explorer by Valentin Kolesnikov
+GitHub: https://github.com/valentin-kolesnikov/YouTube_Explorer
