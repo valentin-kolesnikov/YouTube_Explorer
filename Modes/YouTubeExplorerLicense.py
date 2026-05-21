@@ -1,4 +1,4 @@
-from os import path
+from pathlib import Path
 
 import sys
 
@@ -7,21 +7,21 @@ import sys
 
 
 if getattr(sys, "frozen", False):
-    dir = path.dirname(path.dirname(sys.executable))
+    dir = Path(sys.executable).resolve().parents[1]
 else:
-    dir = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
+    dir = Path(__file__).resolve().parents[1]
 
 
 def launcherLICENSE():
-    license = path.join(dir, "LICENSE")
+    license = Path(dir, "LICENSE")
 
-    if path.isfile(license):
+    if license.is_file():
         with open(license, "r", encoding="utf-8") as f:
             license_text = f.read()
 
     else:
         input("The LICENSE file was not found.\n" \
-        "This software is distributed under the Apache 2.0 License.\n" \
+        "This software is distributed under GNU GPL-3.0\n" \
         "Original project repository: https://github.com/valentin-kolesnikov/YouTube_Explorer\n\n" \
         "Original project: YouTube Explorer by Valentin Kolesnikov\n\n" \
         "Press Enter to return...")
@@ -37,16 +37,16 @@ def launcherLICENSE():
 
 
 
-def launcherNOTICE():
-    notice = path.join(dir, "NOTICE")
+def launcherABOUT():
+    about = Path(dir, "ABOUT")
 
-    if path.isfile(notice):
-        with open(notice, "r", encoding="utf-8") as f:
-            notice_text = f.read()
+    if about.is_file():
+        with open(about, "r", encoding="utf-8") as f:
+            about_text = f.read()
 
     else:
-        input("The NOTICE file was not found.\n" \
-        "This software is distributed under the Apache 2.0 License.\n" \
+        input("The ABOUT file was not found.\n" \
+        "This software is distributed under GNU GPL-3.0\n" \
         "Original project repository: https://github.com/valentin-kolesnikov/YouTube_Explorer\n\n" \
         "Original project: YouTube Explorer by Valentin Kolesnikov\n\n" \
         "Press Enter to return...")
@@ -55,6 +55,6 @@ def launcherNOTICE():
     
     print("\033[H\033[J", end="")
 
-    print(notice_text)
+    print(about_text)
 
     input("\nPress Enter to return...")
