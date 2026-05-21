@@ -2,7 +2,7 @@ from docx import Document
 
 from pathlib import Path
 
-from os import makedirs, path
+from os import makedirs
 
 import sys
 
@@ -60,15 +60,15 @@ def save_docx(transcript_subtitles, available_lang, full_text):
             app_folder = Path(__file__).resolve().parents[1]
 
 
-        youtube_folder = path.join(app_folder, "YouTubeTranscripts")
+        youtube_folder = Path(app_folder, "YouTubeTranscripts")
         makedirs(youtube_folder, exist_ok=True)
 
-        full_path = path.join(youtube_folder, f"{transcript_subtitles.video_id}.docx")
+        full_path = Path(youtube_folder, f"{transcript_subtitles.video_id}.docx")
 
         counter = 0
-        while path.exists(full_path):
+        while Path(full_path).exists():
             counter += 1
-            full_path = path.join(youtube_folder, f"{transcript_subtitles.video_id} ({counter}).docx")
+            full_path = Path(youtube_folder, f"{transcript_subtitles.video_id} ({counter}).docx")
             
 
         doc = Document()
