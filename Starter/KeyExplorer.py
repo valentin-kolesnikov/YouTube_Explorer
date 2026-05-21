@@ -8,6 +8,14 @@ import sys
 
 
 
+def window_title(title):
+    if sys.stdout.isatty():
+        sys.stdout.write(f"\33]0;{title}\a")
+        sys.stdout.flush()
+
+
+
+
 if getattr(sys, "frozen", False):
     app_folder = path.dirname(sys.executable)
 else:
@@ -50,7 +58,15 @@ def youtube_api_key():
     
     return youtube
 
-def window_title(title):
-    if sys.stdout.isatty():
-        sys.stdout.write(f"\33]0;{title}\a")
-        sys.stdout.flush()
+
+def launcherKey(exc_OAuth2):
+    key = memory.load_key()
+    if key:
+        print(f"YouTube API key: {key}\n")
+    else:
+        print("No YouTube API key\n")
+
+    if not exc_OAuth2:
+        print("Remember! You are using OAuth2. If you want to use API key, delete the token files and restart the program.")
+
+    input("\nPress Enter to return...")
