@@ -1,23 +1,14 @@
 from Modes.YouTubeCommentExplorer import launcherComments
-
 from Modes.YouTubeVideoExplorer import launcherVideos
-
 from Modes.YouTubeChannelExplorer import launcherChannels
-
 from Modes.YouTubePlaylistExplorer import launcherPlaylists
-
 from Modes.YouTubeSubtitlesExplorer import launcherSubtitles
-
 from Modes.YouTubeOneVideoExplorer import launcherInfo
-
-from Modes.YouTubeExplorerLicense import launcherNOTICE, launcherLICENSE
-
+from Modes.YouTubeExplorerLicense import launcherABOUT, launcherLICENSE
 from Modes.YouTubeASCIIExplorer import launcherASCII
 
-from Starter.KeyExplorer import youtube_api_key, window_title
-
+from Starter.KeyExplorer import youtube_api_key, window_title, launcherKey
 from Starter.QuotaExplorer import test_quota
-
 from Starter.OAuth2 import youtube_OAuth2
 
 from sys import exit
@@ -31,86 +22,88 @@ from sys import exit
 
 
 if __name__ == "__main__":
-    while True:
+    window_title("YouTube Explorer")
+
+    youtube, exc_OAuth2 = youtube_OAuth2()
+    if exc_OAuth2:
+        youtube = youtube_api_key()
+
+    if not test_quota(youtube):
+        input("\nPress Enter to exit...")
+        exit(1)
+
+    while True:             
         try:
-            window_title("YouTube Explorer")
-
-            youtube, exc_OAuth2 = youtube_OAuth2()
-            if exc_OAuth2:
-                youtube = youtube_api_key()
-
-            if not test_quota(youtube):
-                input("\nPress Enter to exit...")
-                exit(1)
-
+            current_page = 1
             while True:
                 print("\033[H\033[J", end="")
-                print("==========  v1.1.0  ==========\n")
+                print("==========  v1.2.0  ==========")
 
-                questionist = input(
-                    "1. Comments\n" \
-                    "2. Videos\n" \
-                    "3. Channels\n" \
-                    "4. Playlists\n" \
-                    "5. Subtitles\n" \
-                    "6. One Video Info\n" \
-                    "7. LICENSE\n" \
-                    "8. NOTICE\n" \
-                    # "9. ASCII Art" \
-                    "0. Exit\n\n" \
-                    "Enter the number: ")
-                
-                while True:
-                    if questionist == "1":
-                        print("\033[H\033[J", end="")
+                if current_page == 1:
+                    print(f"Page {current_page}\n")
+
+                    questionist1 = input(
+                        "1. Comments\n" \
+                        "2. Videos\n" \
+                        "3. Channels\n" \
+                        "4. Playlists\n" \
+                        "5. Subtitles\n" \
+                        "6. One Video Info\n\n" \
+                        "7. The next page...\n\n" \
+                        "0. Exit\n\n" \
+                        "Enter the number: "
+                    )
+                    
+                    print("\033[H\033[J", end="")
+                    
+                    if questionist1 == "1":
                         launcherComments(youtube)
-                        break
-
-                    elif questionist == "2":
-                        print("\033[H\033[J", end="")
+                    elif questionist1 == "2":
                         launcherVideos(youtube)
-                        break
-
-                    elif questionist == "3":
-                        print("\033[H\033[J", end="")
+                    elif questionist1 == "3":
                         launcherChannels(youtube)
-                        break
-
-                    elif questionist == "4":
-                        print("\033[H\033[J", end="")
+                    elif questionist1 == "4":
                         launcherPlaylists(youtube, exc_OAuth2) 
-                        break
-
-                    elif questionist == "5":
-                        print("\033[H\033[J", end="")
+                    elif questionist1 == "5":
                         launcherSubtitles()
-                        break
-
-                    elif questionist == "6":
-                        print("\033[H\033[J", end="")
+                    elif questionist1 == "6":
                         launcherInfo(youtube)
-                        break
-
-                    elif questionist == "7":
-                        print("\033[H\033[J", end="")
-                        launcherLICENSE()
-                        break
-
-                    elif questionist == "8":
-                        print("\033[H\033[J", end="")
-                        launcherNOTICE()
-                        break
-
-                    elif questionist == "9":
-                        print("\033[H\033[J", end="")
-                        launcherASCII()
-                        break
-
-                    elif questionist == "0":
+                    elif questionist1 == "7":
+                        current_page = 2
+                    elif questionist1 == "0":
                         exit(0)
-
                     else:
-                        questionist = input("\nEnter again: ")
+                        questionist1 = input("\nEnter again: ")
+                            
+                elif current_page == 2:
+                    print(f"Page {current_page}\n")
+
+                    questionist2 = input(
+                        "1. YouTube API Key\n" \
+                        "2. ASCII Art\n" \
+                        "3. LICENSE\n" \
+                        "4. ABOUT\n\n" \
+                        "7. The previous page...\n\n" \
+                        "0. Exit\n\n" \
+                        "Enter the number: "
+                    )
+                    
+                    print("\033[H\033[J", end="")
+                    
+                    if questionist2 == "1":
+                        launcherKey(exc_OAuth2)
+                    elif questionist2 == "2":
+                        launcherASCII()
+                    elif questionist2 == "3":
+                        launcherLICENSE()
+                    elif questionist2 == "4":
+                        launcherABOUT()
+                    elif questionist2 == "7":
+                        break
+                    elif questionist2 == "0":
+                        exit(0)
+                    else:
+                        questionist2 = input("\nEnter again: ")
 
         except KeyboardInterrupt:
             pass
