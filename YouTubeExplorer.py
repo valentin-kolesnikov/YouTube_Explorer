@@ -54,39 +54,31 @@ if __name__ == "__main__":
                         "Enter the number: "
                     )
                     
-                    while True:
-                        if questionist1 == "1":
-                            print("\033[H\033[J", end="")
-                            launcherComments(youtube)
-                            break
-                        elif questionist1 == "2":
-                            print("\033[H\033[J", end="")
-                            launcherVideos(youtube)
-                            break
-                        elif questionist1 == "3":
-                            print("\033[H\033[J", end="")
-                            launcherChannels(youtube)
-                            break
-                        elif questionist1 == "4":
-                            print("\033[H\033[J", end="")
-                            launcherPlaylists(youtube, exc_OAuth2)
-                            break 
-                        elif questionist1 == "5":
-                            print("\033[H\033[J", end="")
-                            launcherSubtitles()
-                            break
-                        elif questionist1 == "6":
-                            print("\033[H\033[J", end="")
-                            launcherInfo(youtube)
-                            break
-                        elif questionist1 == "7":
-                            print("\033[H\033[J", end="")
-                            current_page = 2
-                            break
-                        elif questionist1 == "0":
-                            exit(0)
-                        else:
-                            questionist1 = input("\nEnter again: ")
+                    if questionist1 == "1":
+                        print("\033[H\033[J", end="")
+                        launcherComments(youtube)
+                    elif questionist1 == "2":
+                        print("\033[H\033[J", end="")
+                        launcherVideos(youtube)
+                    elif questionist1 == "3":
+                        print("\033[H\033[J", end="")
+                        launcherChannels(youtube)
+                    elif questionist1 == "4":
+                        print("\033[H\033[J", end="")
+                        launcherPlaylists(youtube, exc_OAuth2) 
+                    elif questionist1 == "5":
+                        print("\033[H\033[J", end="")
+                        launcherSubtitles()
+                    elif questionist1 == "6":
+                        print("\033[H\033[J", end="")
+                        launcherInfo(youtube)
+
+                    elif questionist1 == "7":
+                        current_page = 2
+                    elif questionist1 == "0":
+                        exit(0)
+                    else:
+                        questionist1 = input("\nEnter again: ")
                             
                 elif current_page == 2:
                     print(f"Page {current_page}\n")
@@ -101,30 +93,26 @@ if __name__ == "__main__":
                         "Enter the number: "
                     )
                     
-                    while True:
-                        if questionist2 == "1":
-                            print("\033[H\033[J", end="")
-                            launcherKey(exc_OAuth2)
-                            break
-                        elif questionist2 == "2":
-                            print("\033[H\033[J", end="")
-                            launcherASCII()
-                            break
-                        elif questionist2 == "3":
-                            print("\033[H\033[J", end="")
-                            launcherLICENSE()
-                            break
-                        elif questionist2 == "4":
-                            print("\033[H\033[J", end="")
-                            launcherABOUT()
-                            break
-                        elif questionist2 == "7":
-                            print("\033[H\033[J", end="")
-                            break
-                        elif questionist2 == "0":
-                            exit(0)
-                        else:
-                            questionist2 = input("\nEnter again: ")
+                    if questionist2 == "1":
+                        print("\033[H\033[J", end="")
+                        launcherKey(exc_OAuth2)
+                    elif questionist2 == "2":
+                        print("\033[H\033[J", end="")
+                        launcherASCII()
+                    elif questionist2 == "3":
+                        print("\033[H\033[J", end="")
+                        launcherLICENSE()
+                    elif questionist2 == "4":
+                        print("\033[H\033[J", end="")
+                        launcherABOUT()
+                        
+                    elif questionist2 == "7":
+                        current_page = 1
+                        break
+                    elif questionist2 == "0":
+                        exit(0)
+                    else:
+                        questionist2 = input("\nEnter again: ")
 
         except KeyboardInterrupt:
             pass
