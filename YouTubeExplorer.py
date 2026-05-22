@@ -6,6 +6,7 @@ from Modes.YouTubeSubtitlesExplorer import launcherSubtitles
 from Modes.YouTubeOneVideoExplorer import launcherInfo
 from Modes.YouTubeExplorerLicense import launcherABOUT, launcherLICENSE
 from Modes.YouTubeASCIIExplorer import launcherASCII
+from Modes.YouTubeHistoryExplorer import launcherHistory
 
 from Starter.KeyExplorer import youtube_api_key, window_title, launcherKey
 from Starter.QuotaExplorer import test_quota
@@ -32,7 +33,7 @@ if __name__ == "__main__":
         input("\nPress Enter to exit...")
         exit(1)
 
-    while True:             
+    while True:
         try:
             current_page = 1
             while True:
@@ -49,9 +50,8 @@ if __name__ == "__main__":
                         "4. Playlists\n" \
                         "5. Subtitles\n" \
                         "6. One Video Info\n\n" \
-                        "7. The next page...\n\n" \
                         "0. Exit\n\n" \
-                        "Enter the number: "
+                        "Enter the number (or press Enter for next page): "
                     )
                     while True:
                         if questionist1 == "1":
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                             launcherInfo(youtube)
                             break
 
-                        elif questionist1 == "7":
+                        elif questionist1 == "":
                             current_page = 2
                             break
                         elif questionist1 == "0":
@@ -92,12 +92,12 @@ if __name__ == "__main__":
 
                     questionist2 = input(
                         "1. YouTube API Key\n" \
-                        "2. ASCII Art\n" \
-                        "3. LICENSE\n" \
-                        "4. ABOUT\n\n" \
-                        "7. The previous page...\n\n" \
+                        "2. History\n" \
+                        "3. ASCII Art\n" \
+                        "4. LICENSE\n" \
+                        "5. ABOUT\n\n" \
                         "0. Exit\n\n" \
-                        "Enter the number: "
+                        "Enter the number (or press Enter for prev page): "
                     )
                     
                     while True:
@@ -107,18 +107,22 @@ if __name__ == "__main__":
                             break
                         elif questionist2 == "2":
                             print("\033[H\033[J", end="")
-                            launcherASCII()
+                            launcherHistory()
                             break
                         elif questionist2 == "3":
                             print("\033[H\033[J", end="")
-                            launcherLICENSE()
+                            launcherASCII()
                             break
                         elif questionist2 == "4":
+                            print("\033[H\033[J", end="")
+                            launcherLICENSE()
+                            break
+                        elif questionist2 == "5":
                             print("\033[H\033[J", end="")
                             launcherABOUT()
                             break
                             
-                        elif questionist2 == "7":
+                        elif questionist2 == "":
                             current_page = 1
                             break
                         elif questionist2 == "0":
