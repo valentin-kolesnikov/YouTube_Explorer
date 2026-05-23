@@ -2,8 +2,6 @@ from docx import Document
 
 from pathlib import Path
 
-from os import makedirs
-
 import sys
 
 
@@ -58,7 +56,7 @@ def save_docx(comments, channel, counts, amount_comments, video_id):
 
 
         youtube_folder = Path(app_folder, "YouTubeComments")
-        makedirs(youtube_folder, exist_ok=True)
+        youtube_folder.mkdir(parents=True, exist_ok=True)
 
         full_path = Path(youtube_folder, f"{video_id}.docx")
 

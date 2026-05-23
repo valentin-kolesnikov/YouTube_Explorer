@@ -2,8 +2,6 @@ from docx import Document
 
 from pathlib import Path
 
-from os import makedirs
-
 import sys
 
 
@@ -61,7 +59,7 @@ def save_docx(transcript_subtitles, available_lang, full_text):
 
 
         youtube_folder = Path(app_folder, "YouTubeTranscripts")
-        makedirs(youtube_folder, exist_ok=True)
+        youtube_folder.mkdir(parents=True, exist_ok=True)
 
         full_path = Path(youtube_folder, f"{transcript_subtitles.video_id}.docx")
 

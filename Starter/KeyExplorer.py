@@ -1,7 +1,5 @@
 from googleapiclient.discovery import build
 
-from os import makedirs
-
 from pathlib import Path
 
 import sys
@@ -25,7 +23,7 @@ else:
 
 
 key_folder = Path(app_folder, "Keys")
-makedirs(key_folder, exist_ok=True)
+key_folder.mkdir(parents=True, exist_ok=True)
 
 
 key_file = Path(key_folder, "Key.bin")
