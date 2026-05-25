@@ -36,6 +36,6 @@ def launcherVideos(youtube):
     
     print("\033[H\033[J", end="")
 
-    output_videos(results, statrequest)
+    output_videos(results, statrequest, one_video_info=False)
 
     input("\n\nPress Enter to return...")

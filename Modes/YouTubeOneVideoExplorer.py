@@ -6,7 +6,7 @@ from Patterns.collectingStats import collect_stats
 
 from Patterns.check_connection import internet_available
 
-from SixthFunctions.output import output_info
+from SecondFunctions.output import output_videos
 
 from asyncio import run
 
@@ -28,6 +28,6 @@ def launcherInfo(youtube):
 
     print("\033[H\033[J", end="")
 
-    output_info(results, statrequest)
+    output_videos(results, statrequest, one_video_info=True)
 
     input("\n\nPress Enter to return...")
