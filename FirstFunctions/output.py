@@ -84,4 +84,5 @@ def save_docx(comments, channel, counts, amount_comments, video_id):
 
         doc.save(full_path)
         print(f'\nFile "{full_path}" saved successfully!')
-        return
+        
+        return choice, full_path

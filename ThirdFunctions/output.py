@@ -25,9 +25,9 @@ def output_channel_info(result, statrequests, get_answers, snistics):
         dt = datetime.fromisoformat(vpublished_at.replace("Z", "+00:00"))
         vformatted_date = dt.strftime("%d.%m.%Y %H:%M:%S")
 
-        ch_likes = result.get(videos_id, {}).get("likes", "No")
+        ch_likes = item["statistics"].get("likeCount", "No")
         ch_dislikes = result.get(videos_id, {}).get("dislikes", "No")
-        ch_views = result.get(videos_id, {}).get("viewCount", "No")
+        ch_views = item["statistics"].get("viewCount", "No")
         ch_comments = item["statistics"].get("commentCount", "No")
 
         number += 1
