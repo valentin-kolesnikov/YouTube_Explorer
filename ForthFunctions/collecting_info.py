@@ -10,44 +10,46 @@ from Patterns.errors import http_error, WinError
 
 
 def collect_other_playlists(youtube, keywords, ageAfter, ageBefore, maximum, which_order):
-    try:
-        request = youtube.search().list(
-            q=keywords,
-            publishedBefore=ageBefore,
-            order=which_order,
-            publishedAfter=ageAfter,
-            part="snippet",
-            type="playlist",
-            maxResults=maximum,
-        ).execute()
+    while True:
+        try:
+            request = youtube.search().list(
+                q=keywords,
+                publishedBefore=ageBefore,
+                order=which_order,
+                publishedAfter=ageAfter,
+                part="snippet",
+                type="playlist",
+                maxResults=maximum,
+            ).execute()
 
-        playlist_ids = []
+            playlist_ids = []
 
-        for item in request["items"]:
-            playlist_id = item["id"]["playlistId"]
-            playlist_ids.append(playlist_id)
+            for item in request["items"]:
+                playlist_id = item["id"]["playlistId"]
+                playlist_ids.append(playlist_id)
 
-        return playlist_ids, False
+            return playlist_ids, False
 
 
-    except HttpError as exc:
+        except HttpError as exc:
+            
+            http_error(exc)
+            
+            return {}, True
         
-        http_error(exc)
         
-        return {}, True
-    
-    
-    except OSError as exc:
+        except OSError as exc:
 
-        WinError(exc)
+            if WinError(exc):
+                continue
 
-        return {}, True
-    
-    except Exception:
+            return {}, True
         
-        print("Probably, YouTube has problems with submitted objects")
+        except Exception:
+            
+            print("Probably, YouTube has problems with submitted objects")
 
-        return {}, True
+            return {}, True
     
 
 
@@ -55,117 +57,123 @@ def collect_other_playlists(youtube, keywords, ageAfter, ageBefore, maximum, whi
 
 
 def collect_playlist_details(youtube, playlist_ids):
-    try:
-        statrequest = youtube.playlists().list(
-            part="snippet,contentDetails,status",
-            id=",".join(playlist_ids)
-        ).execute()
+    while True:
+        try:
+            statrequest = youtube.playlists().list(
+                part="snippet,contentDetails,status",
+                id=",".join(playlist_ids)
+            ).execute()
 
-        return statrequest, False
-    
-    except HttpError as exc:
-
-        http_error(exc)
-
-        return {}, True
-    
-    except OSError as exc:
-
-        WinError(exc)
-
-        return {}, True
-    
-    except Exception:
+            return statrequest, False
         
-        print("Probably, YouTube has problems with submitted objects")
+        except HttpError as exc:
 
-        return {}, True
+            http_error(exc)
+
+            return {}, True
+        
+        except OSError as exc:
+
+            if WinError(exc):
+                continue
+
+            return {}, True
+        
+        except Exception:
+            
+            print("Probably, YouTube has problems with submitted objects")
+
+            return {}, True
     
 
 
 def collect_videos_of_playlist(youtube, playlist_URL):
-    try:
-        video_ids = []
-        next_page_token = None
+    while True:
+        try:
+            video_ids = []
+            next_page_token = None
 
-        while True:
-            playlist_request = youtube.playlistItems().list(
-                part="contentDetails",
-                playlistId=playlist_URL,
-                maxResults=50,
-                pageToken=next_page_token
-            ).execute()
+            while True:
+                playlist_request = youtube.playlistItems().list(
+                    part="contentDetails",
+                    playlistId=playlist_URL,
+                    maxResults=50,
+                    pageToken=next_page_token
+                ).execute()
 
-            for item in playlist_request["items"]:
-                video_ids.append(item["contentDetails"]["videoId"])
+                for item in playlist_request["items"]:
+                    video_ids.append(item["contentDetails"]["videoId"])
 
-            next_page_token = playlist_request.get("nextPageToken")
+                next_page_token = playlist_request.get("nextPageToken")
 
-            if not next_page_token:
-                break
+                if not next_page_token:
+                    break
 
-        return video_ids, False
+            return video_ids, False
 
 
-    except HttpError as exc:
+        except HttpError as exc:
 
-        http_error(exc)
+            http_error(exc)
 
-        return {}, True
-    
-    except OSError as exc:
-
-        WinError(exc)
-
-        return {}, True
-    
-    except Exception:
+            return {}, True
         
-        print("Probably, YouTube has problems with submitted objects")
+        except OSError as exc:
 
-        return {}, True
+            if WinError(exc):
+                continue
+
+            return {}, True
+        
+        except Exception:
+            
+            print("Probably, YouTube has problems with submitted objects")
+
+            return {}, True
 
 
 
     
 
 def collect_your_playlists(youtube):
-    try:
-        statrequest = []
-        next_page_token = None
+    while True:
+        try:
+            statrequest = []
+            next_page_token = None
 
-        while True:
-            mine_playlists = youtube.playlists().list(
-                part="snippet,contentDetails,status",
-                maxResults=50,
-                pageToken=next_page_token,
-                mine=True
-            ).execute()
+            while True:
+                mine_playlists = youtube.playlists().list(
+                    part="snippet,contentDetails,status",
+                    maxResults=50,
+                    pageToken=next_page_token,
+                    mine=True
+                ).execute()
 
-            for item in mine_playlists["items"]:
-                statrequest.append(item)
+                for item in mine_playlists["items"]:
+                    statrequest.append(item)
 
-            next_page_token = mine_playlists.get("nextPageToken")
+                next_page_token = mine_playlists.get("nextPageToken")
 
-            if not next_page_token:
-                break
+                if not next_page_token:
+                    break
 
-        return {"items": statrequest}, False
+            return {"items": statrequest}, False
 
-    except HttpError as exc:
+        except HttpError as exc:
 
-        http_error(exc)
+            http_error(exc)
 
-        return {}, True
-    
-    except OSError as exc:
-
-        WinError(exc)
-
-        return {}, True
-    
-    except Exception:
+            return {}, True
         
-        print("Probably, YouTube has problems with submitted objects")
+        except OSError as exc:
 
-        return {}, True
+            if WinError(exc):
+                continue
+
+            return {}, True
+        
+        except Exception:
+            
+            print("Probably, YouTube has problems with submitted objects")
+
+            return {}, True

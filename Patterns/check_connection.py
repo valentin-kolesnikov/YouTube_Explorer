@@ -15,4 +15,5 @@ def internet_available():
 
         except OSError as exc:
             
-            WinError(exc)
+            if WinError(exc):
+                continue

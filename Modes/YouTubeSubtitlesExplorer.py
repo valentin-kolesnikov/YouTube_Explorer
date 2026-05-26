@@ -24,32 +24,36 @@ from InputData.SubtitlesExplorer import language_needed, view_of_text
 
 def launcherSubtitles():
     video_id = youtube_id_finder()
-    try:
-        video_list = YouTubeTranscriptApi().list(video_id)
 
-    except OSError as exc:
+    while True:
+        try:
+            video_list = YouTubeTranscriptApi().list(video_id)
+            break
 
-        WinError(exc)
+        except OSError as exc:
 
-        return
-    
-    except VideoUnplayable:
+            if WinError(exc):
+                continue
 
-        input("\n\u001b[31mThe video is unplayable\u001b[0m\n\nPress Enter to return...")
+            return
+        
+        except VideoUnplayable:
 
-        return
-    
-    except RequestBlocked:
+            input("\n\u001b[31mThe video is unplayable\u001b[0m\n\nPress Enter to return...")
 
-        input("\n\u001b[31mYouTube is blocking requests from your IP\u001b[0m\n\nPress Enter to return...")
+            return
+        
+        except RequestBlocked:
 
-        return
-    
-    except TranscriptsDisabled:
+            input("\n\u001b[31mYouTube is blocking requests from your IP\u001b[0m\n\nPress Enter to return...")
 
-        input("\n\u001b[31mThe video does not have subtitles\u001b[0m\n\nPress Enter to return...")
+            return
+        
+        except TranscriptsDisabled:
 
-        return
+            input("\n\u001b[31mThe video does not have subtitles\u001b[0m\n\nPress Enter to return...")
+
+            return
     
 
     languages_list = language_needed()
@@ -61,17 +65,20 @@ def launcherSubtitles():
         print("\033[H\033[J", end="")
         return
     
+    while True:
+        try:
+            available_lang = available_languages(transcript_subtitles)
 
-    try:
-        available_lang = available_languages(transcript_subtitles)
+            full_text = transcript_fetch(transcript_subtitles)
 
-        full_text = transcript_fetch(transcript_subtitles)
+            break
 
-    except OSError as exc:
+        except OSError as exc:
 
-        WinError(exc)
+            if WinError(exc):
+                continue
 
-        return
+            return
     
 
     print("\033[H\033[J", end="")
