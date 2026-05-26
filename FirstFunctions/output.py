@@ -45,8 +45,10 @@ def save_docx(comments, channel, counts, amount_comments, video_id):
         if choice in ["y", "n"]:
             break
         choice = input("\nEnter again correctly (y/n): ").lower()
-    
-    if choice == "y":
+    if choice == "n":
+        return choice, None
+
+    elif choice == "y":
         if getattr(sys, 'frozen', False):
             exe_path = Path(sys.executable).resolve()
             app_folder = exe_path.parents[1]
