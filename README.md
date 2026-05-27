@@ -1,23 +1,23 @@
-<p align="center">
-   <img src="Image/GeneralYE.png" alt="YouTube Explorer">
-</p>
-<p align="center">
-   <img src="https://img.shields.io/badge/Code_Editor-VS%20Code-blue" alt="Code Editor VS Code">
-   <img src="https://img.shields.io/badge/Version-1.0v-purple" alt="Version 1.0v">
-   <img src="https://img.shields.io/badge/License-Apache--2.0-red" alt="License Apache-2.0">
-   <img src="https://img.shields.io/badge/Python-3.14+-yellowblue" alt="Python 3.14+">
-</p>
+![YouTube Explorer](Image/GeneralYE.png)
 
-## <p align="center">English | <a href="README_RU.md">Русский</a></p>
+<div align="center">
+
+  ![Code Editor](https://img.shields.io/badge/Code_Editor-VS%20Code-blue)
+  ![Version](https://img.shields.io/github/v/release/valentin-kolesnikov/Youtube_Explorer?include_prereleases&color=FF0000&label=Version) <!--old color label forever-->
+  ![License](https://img.shields.io/github/license/valentin-kolesnikov/Youtube_Explorer?color=FFFFFF&label=License)
+  ![Python](https://img.shields.io/badge/Python-3.14-yellowblue)
+</div>
+
+## English | [Русский](README_RU.md)
 
 **YouTube Explorer** is a console-based Python tool for programmatic exploration of YouTube content using **YouTube Data API v3** (with OAuth 2.0 support), **Return YouTube Dislike API**, and **YouTube Transcript API**
 
 > [!CAUTION]
-> The original repository is only available in my [GitHub](https://github.com/valentin-kolesnikov/YouTube_Explorer) repository  
-> Clones, distributed on my behalf on other websites and **GitHub** repositories, are not my work.
+> The official repository is only available on my [GitHub](https://github.com/valentin-kolesnikov/YouTube_Explorer).
+> Any clones distributed on my behalf on other platforms are not my work.
 
 > [!WARNING]
-> Antivirus software reacts to the app as a potentially unwanted app. This is clearly an error.  
+> Some antivirus software may flag the app as a potentially unwanted program (PUP). This is a false positive.
 > All materials used for the app are stored in the public repository.  
 > As a developer, I have no desire to harm other users. You can always contact me via email for such issues.
 
@@ -36,7 +36,6 @@ YouTube Explorer is designed for:
 - [🌐How to download?](#how-to-download)
   - [Releases](#releases)
   - [Git](#git)
-  - [Linux](#linux)
 - [❓How to get the YouTube Data API v3 key?](#how-to-get-the-youtube-data-api-v3-key)
 - [🛡️ How to get OAuth 2.0 credentials?](#️-how-to-get-oauth-20-credentials)
 - [Core capabilities](#core-capabilities)
@@ -70,69 +69,69 @@ Basic familiarity with command-line usage is recommended.
 
 ## Releases
 
+Windows:
 1. `Releases` → `YouTubeExplorer.zip`
 2. Extract the `.zip` folder
 3. `bin` → open `YouTubeExplorer.exe`
 
-The binary works on Windows, not on Linux without `Wine` (a compatibility layer capable of running Windows applications).
+Ubuntu-like:
+1. **Releases** → `YouTubeExplorer.tar.gz`
+2. Extract the `.tar.gz` folder
+3. YouTubeExplorer.dist → Copy `YouTubeExplorer.bin` → Paste it into the terminal and press Enter, or run it via command: `./YouTubeExplorer.bin`
 
 ## Git
 
-`git clone https://github.com/valentin-kolesnikov/YouTube_Explorer`
-
-## Linux
-
-`curl -L -o YouTubeExplorer.zip https://github.com/valentin-kolesnikov/YouTube_Explorer/releases/download/v1.0.0/YouTubeExplorer.zip`
-
-You download the repository with the code. You need to download `Python 3.10+`. It need more for Linux users, unfortunately.
+1. Install `Git`
+2. In the terminal, paste: `git clone https://github.com/valentin-kolesnikov/YouTube_Explorer`
+3. Map to the folder and run the main script `YouTubeExplorer.py`
+4. Type `pip install -r requirements.txt` in the terminal to install all dependencies
 
 # ❓How to get the YouTube Data API v3 key?
 
-1. You need to follow [Google Cloud Console](https://console.cloud.google.com)
+1. Go to the [Google Cloud Console](https://console.cloud.google.com)
 
 2. You need to register for a Google account or log in to it.
 
-3. Next, you press the `Create or select a project` button in the center of the page → `New project`
+3. Click the **Create or select a project** button in the center of the page → **New project**
 
-4. Next, you write the project name (Google can **automatically** specify the name, you do not have to write this name if you want) → If you do not have an organisation, just do not touch the `Location` item. → Press `Create`.
+4. Enter a project name (or leave the auto-generated one). → If you do not belong to an organisation, leave the **Location** as default. → Click **Create**.
 
-5. Without leaving the site, you need to press `Select project` and choose your project. You write to the search engine: **YouTube Data API v3** → `Enable`
+5. On the same page, click **Select project** and choose your project. Type `YouTube Data API v3` in the search bar → click **Enable**
 
-6. You will be redirected to the API configuration. In the left column, you should press `Credentials`.
+6. You will be redirected to the API configuration. In the left column, you should press **Credentials**.
 
-7. At the top, click `Create credentials` → `API key`.
+7. At the top, click **Create credentials** → **API key**.
 
-8. The end of the way! Just copy your API key and paste it into the Windows notepad or somewhere else.
+8. That is it! Copy your API key and paste it into YouTube Explorer. If you need, you can restore the key from the main menu.
 
 # 🛡️ How to get OAuth 2.0 credentials?
 
 - The application is designed to use **OAuth 2.0** as the primary authentication method
 - If OAuth client secrets are not found, the system switches to the **YouTube Data API Key** method without interrupting the user
-- There is a problem registering the application in OAuth 2, so we create credentials ourselves.
 
-How to set it up:
+Since automated OAuth 2.0 registration isn't supported out-of-the-box, you will need to generate your own credentials by following these steps:
 
 1. Go to the [Google Cloud Console](https://console.cloud.google.com).
 
 2. Select the project you already created for your YouTube Data API v3 key.
 
-3. In the left column, click `OAuth consent screen`.
+3. In the left column, click **OAuth consent screen**.
 
-4. Choose `External` as the User Type and click `Create`.
+4. Choose **External** as the User Type and click **Create**.
 
-5. Fill in the required fields: **App name**, **User support email**, and **Developer contact information** (you can just use your own email for all of these). Click `Save and Continue`.
+5. Fill in the required fields: `App name`, `User support email`, and `Developer contact information` (you can use your own email for all of these). Click **Save and Continue**.
 
-6. You can skip the **Scopes** page by clicking `Save and Continue`.
+6. Skip the **Scopes** page by clicking **Save and Continue**.
 
-7. On the **Test users** page, click `Add Users` and type in your own Google account email. Click `Save and Continue`.
+7. On the **Test users** page, click **Add Users** and type in your own Google account email. Click **Save and Continue**.
 
-8. Now, click on `Credentials` in the left column again.
+8. Now, click on **Credentials** in the left column again.
 
-9. At the top, click `Create credentials` → `OAuth client ID`.
+9. At the top, click **Create credentials** → **OAuth client ID**.
 
-10. Select `Desktop app` as the Application type. You can leave the default name. Click `Create`.
+10. Select **Desktop app** as the Application type. You can leave the default name. Click **Create**.
 
-11. A window will pop up. Click `Download JSON` to save your credentials.
+11. A window will pop up. Click **Download JSON** to save your credentials.
 
 12. The downloaded `.json` file must be placed in the `Keys` folder of the `bin` folder.
 
@@ -151,12 +150,11 @@ How to set it up:
 
 ## 💌Comment Explorer
 
-- get a list of comments on YouTube videos in the console
-- filter comments by keyword
-- sort `by time` or `by relevance`
-- limit the number of output results
-- find out the channel's name where the video is hosted
-- Comment Explorer inform why an error occured if it is a cause
+- Get a list of comments on YouTube videos in the console
+- Filter comments by keyword
+- Sort `by time` or `by relevance`
+- Limit the number of output results
+- Identify the channel hosting the video
 - NEW! Comment Explorer can save the collected data in a `.docx` file
 
 ## 📹Video Explorer
@@ -165,7 +163,7 @@ How to set it up:
 - Perform region-specific searches
 - Apply optional filters such as: `publication date range` and `video duration`
 - Control the maximum number of returned search results
-- For one video you will receive the information block:
+- For each video, you will receive the following metadata:
    1. The title of the video
    2. Direct URL
    3. View count
@@ -178,9 +176,9 @@ How to set it up:
 ## 📈Channel Explorer
 
 - Collect most of the channel statistics:
-  - subscriber count  
-  - view count  
-  - description  
+  - Subscriber count  
+  - View count  
+  - Description  
   - registration date
   - Channel ID (UC...)
   - Handle (@...)
@@ -217,29 +215,34 @@ How to set it up:
 - **Dislikes** — **Return YouTube Dislike API** is integrated to show dislike counts mixed with official data
 - **Comment filtering** — **Keywords** are used to filter comments and replies locally. YouTube Data API does not do this filtering
 - **Quota check** — a test request is made at the start to ensure your **YouTube API quota** is not exceeded before running
-- **Automatic verification** — before making API requests, YouTube Explorer pings `google.com` to ensure your connection is active. If the connection lost, you can retry to connect
+- **Automatic verification** — before making API requests, YouTube Explorer pings `google.com` to ensure your connection is active. If the connection is lost, you can retry connecting
+- Receive detailed error messages if something goes wrong
+- Now the main menu consists of two pages
+- Restore your **YouTube API key** on the second page of the main menu
 
 # 🖌️License
 
-YouTube Explorer is licensed under the `Apache-2.0 license`.
+YouTube Explorer is licensed under the `GNU GPL-3.0`.
 
 Versions released before 22-01-2026 were licensed under the `MIT License`.
+
+Versions released before 20.05.2026 were licensed under the `Apache-2.0 license`
 
 Author: Valentin Kolesnikov  
 Original repository: [YouTube_Explorer](https://github.com/valentin-kolesnikov/YouTube_Explorer)
 
-For more details, see the [LICENSE](LICENSE) and [NOTICE](NOTICE) files.
+For more details, see the [LICENSE](LICENSE) and [ABOUT](ABOUT) files.
 
 # ❤️Contributing
 
 Thank you for your interest in contributing to this project.
 
-This project is licensed under the `Apache License, Version 2.0`. By submitting a pull request, you agree that your contribution will be licensed under the `Apache License 2.0`.
+This project is licensed under the **General Public License 3.0**. By submitting a pull request, you agree that your contribution will be licensed under the `GPL-3.0`.
 
 If you create a fork or derivative work based on this project, please provide clear attribution in your `README`.
 
 A recommended attribution format is:  
-`Original project: YouTube Explorer by Valentin Kolesnikov`
+**Original project: YouTube Explorer by Valentin Kolesnikov**
 
 This attribution helps avoid confusion about authorship and is considered good open-source practice.
 
@@ -257,7 +260,3 @@ If you really want to support me, here is the link: [`DonationAlerts`](https://w
 ## ❓Issues
 
 I will be glad to see your opinions and ideas for new features or improvements. Moreover, please report bugs. Just open an issue and surprise me!
- 
-<!-- ## Striving
-
-Probably soon I will stop updating YouTube Explorer. I need to gain experience in different areas. I must grow even more! -->
