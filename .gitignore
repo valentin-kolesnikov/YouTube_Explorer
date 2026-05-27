@@ -20,7 +20,7 @@ dist/
 .env
 *.key
 *.json
-*.txt
+*D.txt
 *.csv
 *.bin
 *.ini
@@ -33,3 +33,4 @@ Pictures/
 Keys/
 YouTubeComments/
 YouTubeTranscripts/
+YouTubeHistory/
