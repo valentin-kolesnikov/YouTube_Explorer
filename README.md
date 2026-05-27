@@ -182,7 +182,7 @@ Since automated OAuth 2.0 registration isn't supported out-of-the-box, you will 
   - registration date
   - Channel ID (UC...)
   - Handle (@...)
-- If necessary, you can search videos on the channel thanks to Video Explorer
+- If necessary, you can search videos on the certain channel thanks to the Video Explorer components
 
 ## 🗂️Playlist Explorer
 
@@ -218,7 +218,7 @@ Since automated OAuth 2.0 registration isn't supported out-of-the-box, you will 
 - **Automatic verification** — before making API requests, YouTube Explorer pings `google.com` to ensure your connection is active. If the connection is lost, you can retry connecting
 - Receive detailed error messages if something goes wrong
 - Now the main menu consists of two pages
-- Restore your **YouTube API key** on the second page of the main menu
+- Restore your **YouTube API** key on the second page of the main menu
 
 # 🖌️License
 
@@ -259,4 +259,4 @@ If you really want to support me, here is the link: [`DonationAlerts`](https://w
 
 ## ❓Issues
 
-I will be glad to see your opinions and ideas for new features or improvements. Moreover, please report bugs. Just open an issue and surprise me!
+I will be glad to see your opinions and ideas for new features or improvements. Moreover, please report bugs. Just open **Issues** and surprise me!
