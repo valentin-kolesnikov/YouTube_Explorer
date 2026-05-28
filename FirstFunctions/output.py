@@ -71,12 +71,17 @@ def save_docx(comments, channel, counts, amount_comments, video_id):
         doc = Document()
         doc.add_heading("Comment Report for YouTube", 0)
         
-        doc.add_paragraph(f"Channel ID: {channel}")
+        doc.add_paragraph(f"Channel link: https://www.youtube.com/channel/{channel}")
+        doc.add_paragraph(f"Video link: https://www.youtube.com/watch?v={video_id}")
+        
         doc.add_paragraph(f"Total comments found: {amount_comments}")
         
         doc.add_heading("Keyword Statistics:", level=1)
-        for key_word, count in counts.items():
-            doc.add_paragraph(f"{key_word}: {count}", style='List Bullet')
+        if counts == {}:
+            doc.add_paragraph("None")
+        else:
+            for key_word, count in counts.items():
+                doc.add_paragraph(f"{key_word}: {count}", style='List Bullet')
             
         doc.add_heading("Selected Comments:", level=1)
         for index, comment in enumerate(comments, 1):
