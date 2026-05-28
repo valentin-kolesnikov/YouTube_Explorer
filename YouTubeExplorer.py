@@ -51,7 +51,7 @@ if __name__ == "__main__":
                         "5. Subtitles\n" \
                         "6. One Video Info\n\n" \
                         "0. Exit\n\n" \
-                        "Enter the number (or press Enter for next page): "
+                        "Enter the number (press Enter for next page): "
                     )
                     while True:
                         if questionist1 == "1":
@@ -85,7 +85,7 @@ if __name__ == "__main__":
                         elif questionist1 == "0":
                             exit(0)
                         else:
-                            questionist1 = input("\nEnter again: ")
+                            break
                             
                 elif current_page == 2:
                     print(f"Page {current_page}\n")
@@ -97,7 +97,7 @@ if __name__ == "__main__":
                         "4. LICENSE\n" \
                         "5. ABOUT\n\n" \
                         "0. Exit\n\n" \
-                        "Enter the number (or press Enter for prev page): "
+                        "Enter the number (press Enter for prev page): "
                     )
                     
                     while True:
@@ -128,7 +128,8 @@ if __name__ == "__main__":
                         elif questionist2 == "0":
                             exit(0)
                         else:
-                            questionist2 = input("\nEnter again: ")
+                            break
+                        
 
         except KeyboardInterrupt:
             pass
