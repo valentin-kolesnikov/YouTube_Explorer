@@ -1,6 +1,11 @@
 from datetime import datetime
+
 from json import dump 
+
 from pathlib import Path
+
+import sys
+
 
 
 
@@ -15,7 +20,12 @@ class HistorySessions:
 
         self.created_at = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        self.folder = Path("YouTubeHistory", 
+        if getattr(sys, "frozen", False):
+            app_folder = Path(sys.executable).resolve().parents[1]
+        else:
+            app_folder = Path(__file__).resolve().parents[1]
+
+        self.folder = Path(app_folder, "YouTubeHistory",
                             now.strftime("%Y"),
                             now.strftime("%m"),
                             now.strftime("%d"))

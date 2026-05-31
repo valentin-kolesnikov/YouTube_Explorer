@@ -2,6 +2,8 @@ from HistoryFunctions.output import open_history_json
 
 from pathlib import Path
 
+import sys
+
 
 
 
@@ -14,7 +16,14 @@ from pathlib import Path
 def launcherHistory():
     
     try:
-        json_path = Path("YouTubeHistory")
+        if getattr(sys, "frozen", False):
+            app_folder = Path(sys.executable).resolve().parents[1]
+            json_path = app_folder / "YouTubeHistory"
+
+        else:
+            app_folder = Path(__file__).resolve().parents[1]
+            json_path = Path("YouTubeHistory")
+
         while True:
         
             year_folders = sorted(json_path.iterdir(), key=lambda x: x.name)
@@ -25,7 +34,8 @@ def launcherHistory():
 
                 indexed[str(index)] = folder
 
-                print(f"====== {json_path} ======\n")
+                relative_display = json_path.resolve().relative_to(app_folder.resolve())
+                print(f"====== {relative_display} ======\n")
 
                 if folder.is_dir():
                     print(f"{index}. {folder.name}")
