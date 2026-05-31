@@ -15,7 +15,6 @@ def launcherHistory():
     
     try:
         json_path = Path("YouTubeHistory")
-
         while True:
         
             year_folders = sorted(json_path.iterdir(), key=lambda x: x.name)
@@ -67,6 +66,13 @@ def launcherHistory():
             return selected, False
 
     except Exception:
+        if not json_path.exists():
+            print("\033[H\033[J", end="")
+            print("No history found.")
+
+            input("\nPress Enter to return...")
+            return
+        
         print("\033[H\033[J", end="")
 
         return
