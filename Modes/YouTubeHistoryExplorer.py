@@ -22,7 +22,7 @@ def launcherHistory():
 
         else:
             app_folder = Path(__file__).resolve().parents[1]
-            json_path = Path("YouTubeHistory")
+            json_path = app_folder / "YouTubeHistory"
 
         while True:
         
