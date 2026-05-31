@@ -38,7 +38,7 @@ if __name__ == "__main__":
             current_page = 1
             while True:
                 print("\033[H\033[J", end="")
-                print("==========  v1.2.0  ==========")
+                print("============  v1.2.0  ============")
 
                 if current_page == 1:
                     print(f"Page {current_page}\n")
