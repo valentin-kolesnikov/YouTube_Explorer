@@ -14,15 +14,15 @@ from Patterns.HistoryLogs import HistorySessions
 
 
 def launcherComments(youtube):
-    history = HistorySessions("Comments")
+    history = HistorySessions("Comment")
 
     video_id = youtube_id_finder()
-    history.add_session("ENTER_VIDEO_ID", video_id="https://www.youtube.com/watch?v=" + video_id)
+    history.add_session("ENTER_VIDEO_ID", video_link="https://www.youtube.com/watch?v=" + video_id)
     history.save()
 
 
     which_order, search_terms = youtube_filters()
-    history.add_session("ENTER_FILTERS", which_order=which_order, search_terms=list(search_terms))
+    history.add_session("ENTER_FILTERS", search_terms=list(search_terms), which_order=which_order)
     history.save()
 
     internet_available()
@@ -34,6 +34,7 @@ def launcherComments(youtube):
     if exc:
         history.add_session("ERROR", error=str(exc))
         history.save()
+
         print("\033[H\033[J", end="")
         return
     
@@ -42,6 +43,7 @@ def launcherComments(youtube):
     if exc:
         history.add_session("ERROR", error=str(exc))
         history.save()
+
         print("\033[H\033[J", end="")
         return
     
@@ -56,13 +58,14 @@ def launcherComments(youtube):
     if amount_comments == 0:
         history.add_session("NO_COMMENTS")
         history.save()
+        
         input("\nPress Enter to return...")
         return
     
     
     
     number_comments(comments, channel)
-    history.add_session("OUTPUT_COMMENTS", status="SUCCESS", amount_comments=amount_comments)
+    history.add_session("OUTPUT_COMMENTS", status="SUCCESS", amount_comments=amount_comments, counts=counts)
     history.save()
 
 

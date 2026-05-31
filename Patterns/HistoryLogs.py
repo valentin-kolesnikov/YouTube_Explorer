@@ -11,7 +11,7 @@ class HistorySessions:
 
         now = datetime.now()
 
-        self.timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
+        self.timestamp = now.strftime("%H-%M-%S")
 
         self.created_at = now.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -27,7 +27,7 @@ class HistorySessions:
         self.path = self.folder / self.file
 
         self.data = {
-            "actions": self.now(),
+            "time": self.now(),
             "tool": tool,
             "sessions": []
         }
@@ -38,7 +38,7 @@ class HistorySessions:
     def add_session(self, action, **data):
 
         self.data["sessions"].append({
-            "time": self.now(),
+            "time_action": self.now(),
             "action": action,
             "data": data
         })
