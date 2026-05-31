@@ -47,6 +47,7 @@ YouTube Explorer is designed for:
   - [🗂️Playlist Explorer](#️playlist-explorer)
   - [📄Subtitles Explorer](#subtitles-explorer)
   - [🔢Info Explorer](#info-explorer)
+  - [📖History Explorer](#history-explorer)
 - [⚙️ Functionality](#️-functionality)
 - [🖌️License](#️license)
 - [❤️Contributing](#️contributing)
@@ -204,6 +205,12 @@ Since automated OAuth 2.0 registration isn't supported out-of-the-box, you will 
 
 - Enter a specific video URL to directly extract metadata without searching
 - Returns the complete information block detailed in [Video Explorer](#video-explorer) and, additionally, the video description
+
+## 📖History Explorer
+
+- Navigate through your past session logs chronologically
+- Automatically structure and store session data in directories sorted by "`year` => `month` => `day`"
+- View detailed information about previously executed tools (meanwhile Comment Explorer) and their specific actions
 
 # ⚙️ Functionality
 
