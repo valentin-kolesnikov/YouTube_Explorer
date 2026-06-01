@@ -30,13 +30,13 @@ def launcherHistory():
 
             indexed = {}
 
+            relative_display = json_path.resolve().relative_to(app_folder.resolve())
+            print(f"====== {relative_display} ======\n")
+
             for index, folder in enumerate(year_folders, start=1):
 
                 indexed[str(index)] = folder
-
-                relative_display = json_path.resolve().relative_to(app_folder.resolve())
-                print(f"====== {relative_display} ======\n")
-
+                
                 if folder.is_dir():
                     print(f"{index}. {folder.name}")
 
