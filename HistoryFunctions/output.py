@@ -46,12 +46,13 @@ def open_history_json(json_path, selected):
     print("===================================================")
 
     
-    exc = input('\n1. Main Menu\n2. Back\n\nEnter the number: ')
+    exc = input('\n1. Back\n2. Main Menu\n\nEnter the number: ')
     while True:
         
+        
         if exc == "1":
-            return True
-        elif exc == "2":
             return False
+        elif exc == "2":
+            return True
         else:
             exc = input('\nEnter it again correctly (1/2): ')
