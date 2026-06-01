@@ -48,10 +48,10 @@ def youtube_api_key():
     api_key = memory.load_key()
 
     if not api_key:
-        api_key = input("Enter your YouTube API key: ")
+        api_key = input("Enter your YouTube API key: ").strip()
 
         while len(api_key) != 39:
-            api_key = input("\nThis is not the YouTube API key. Try entering the API key again: ")
+            api_key = input("\nThis is not the YouTube API key. Try entering the API key again: ").strip()
         memory.save_key(api_key)
 
     youtube = build('youtube', 'v3', developerKey=api_key, static_discovery=False)
