@@ -20,7 +20,7 @@ def open_history_json(json_path, selected):
     with open(selected, "r", encoding="utf-8") as file:
         data = load(file)
 
-    print(f"============ {json_path} ============\n")
+    print(f"============ {json_path}/{selected.name} ============\n")
 
     print(f"{data['tool']} Explorer")
     print(f"Time: {data['time']}\n")
@@ -46,13 +46,13 @@ def open_history_json(json_path, selected):
     print("===================================================")
 
     
-    exc = input('\n1. Back\n2. Main Menu\n\nEnter the number: ')
+    exc = input('\n1. Main Menu\n\nEnter the number (Press Enter to return): ')
     while True:
         
         
         if exc == "1":
-            return False
-        elif exc == "2":
             return True
+        elif exc == "":
+            return False
         else:
-            exc = input('\nEnter it again correctly (1/2): ')
+            exc = input('\nEnter it again correctly: ')

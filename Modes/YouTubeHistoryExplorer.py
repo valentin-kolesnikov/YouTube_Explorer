@@ -66,7 +66,8 @@ def launcherHistory():
 
             else:
                 print("\033[H\033[J", end="")
-                exc = open_history_json(json_path, selected)
+                exc = open_history_json(relative_display, selected)
+                
                 if exc:
                     raise Exception
                 elif not exc:
