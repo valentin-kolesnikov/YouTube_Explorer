@@ -26,14 +26,14 @@ def launcherComments(youtube):
     log(history, "CHECK_INTERNET")
 
 
-    comments, exc = collect_comments(video_id, search_terms, which_order, youtube, choice_reply)
+    channel_id, channel_title, exc = channel_name(video_id, youtube)
     if exc:
         log_error(history, exc, error=True)
         clear()
         return
-    
 
-    channel_id, channel_title, exc = channel_name(video_id, youtube)
+
+    comments, exc = collect_comments(video_id, search_terms, which_order, youtube, choice_reply)
     if exc:
         log_error(history, exc, error=True)
         clear()

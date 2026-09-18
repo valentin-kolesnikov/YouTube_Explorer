@@ -82,7 +82,7 @@ def number_comments(comments, channel_id, channel_title):
                   f"\n\tLike Count: {reply["likeCount"]}"
                   f"\n\tPublished at: {reply_formatted_date}")
             if reply["updated_at"] != reply["published_at"]:
-                print(f"\n\tUpdated at: {reply_updated_formatted_date}")
+                print(f"\tUpdated at: {reply_updated_formatted_date}")
 
     return number
 

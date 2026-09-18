@@ -10,7 +10,7 @@ class PatternError:
             return "Unexpected error occurred"
         
         print(f"\n{red}{type(exc).__name__}: {exc}{reset}")
-        input("\nPress Enter to return...")
+        input("\nPress Enter to continue...")
         return str(exc)
 
 
@@ -43,7 +43,7 @@ def http_error(exc):
     print(f"\n{red}Error {status}: {issue}{reset}")
     
 
-    input("\nPress Enter to return...")
+    input("\nPress Enter to continue...")
 
     return issue
 
