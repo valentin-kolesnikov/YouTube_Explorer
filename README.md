@@ -19,6 +19,9 @@
 > Any clones distributed on my behalf on other platforms are not my work.
 
 > [!WARNING]
+> If you get an error from starting the application, you need to disable your proxy. If YouTube is blocked in your country, you need to enable the TUN mode in the your VPN client. Soon I will provide proxy support
+
+> [!WARNING]
 > Some antivirus software may flag the app as a potentially unwanted program (PUP). This is a false positive.
 > All materials used for the app are stored in the public repository.  
 > As a developer, I have no desire to harm other users. You can always contact me via email for such issues.
