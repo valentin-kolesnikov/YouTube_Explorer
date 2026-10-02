@@ -6,7 +6,6 @@ __pycache__/
 *.pyc
 
 # PyInstaller
-*.spec
 build/
 dist/
 *.exe
