@@ -13,4 +13,4 @@ comment_purple = "\033[38;5;141m"
 
 
 
-print(f"{author_link}TEXT{reset}TEXT")
+# print(f"{author_link}TEXT{reset}TEXT")
