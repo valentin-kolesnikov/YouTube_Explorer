@@ -1,5 +1,5 @@
 import sys
-from json import loads
+from json import JSONDecodeError, loads
 
 from Patterns.color_output import red, reset
 
@@ -14,6 +14,13 @@ class PatternError:
         return str(exc)
 
 
+def decode_error(exc):
+    try:
+        return loads(exc.content.decode("utf-8"))["error"]["errors"][0]["reason"]
+    except KeyError, TypeError, IndexError, AttributeError, UnicodeDecodeError, JSONDecodeError:
+        return None
+
+
 def http_error(exc):
     status = exc.resp.status
 
@@ -22,18 +29,20 @@ def http_error(exc):
             issue = "Bad Request. There are some issues with Google requests. Make sure that you entered correctly."
 
         case 403:
-            error_json = loads(exc.content.decode("utf-8"))
-            reason = error_json["error"]["errors"][0]["reason"]
+            reason = decode_error(exc)
 
             if reason == "commentsDisabled":
                 issue = "Forbidden. Comments of the video are disabled."
-            else:
-                issue = "Forbidden. Probably, you exceeded your YouTube API quota."
 
+            elif reason == "quotaExceeded":
+                print(f"\n\u001b[31mError {status}: Forbidden. You exceeded your YouTube API quota.\u001b[0m")
+
+            else:
+                issue = "Forbidden." + f"Reason: {reason}." if reason else ""
+                
         case 404:
             issue = "Not Found. Probably, the requested video does not exist."
 
-        
         case 429:
             issue = "Too Many Requests. You exceeded your Search Queries quota."
 
