@@ -1,32 +1,16 @@
-from urllib.error import URLError
-from urllib.request import urlopen
+from httplib2 import Http, HttpLib2Error
 
 from Patterns.errors import WinError
 
-TEST_URL = (
-    "http://clients3.google.com/generate_204",
-    "https://www.cloudflare.com",
-    "https://www.microsoft.com"
-)
-
+TEST_URL = "https://youtube.googleapis.com/"
 
 def internet_available():
     while True:
-        is_connected = False
-
-        for url in TEST_URL:
-            try:
-                urlopen(url, timeout=3)
-                is_connected = True
-                break
-
-            except (OSError, URLError):
-                continue
-
-        if is_connected:
+        try:
+            Http(timeout=3).request(TEST_URL, "HEAD")
             return True
-
-        exc = OSError(11001, "No Internet connection available")
+        except (OSError, HttpLib2Error):
+            exc = OSError(11001, "No Internet connection available")
             
-        if WinError(exc):
-            continue
+            if WinError(exc):
+                continue
