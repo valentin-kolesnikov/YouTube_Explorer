@@ -1,9 +1,8 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import (
-    RequestBlocked,
     TranscriptsDisabled,
     VideoUnavailable,
-    VideoUnplayable,
+    YouTubeRequestFailed,
 )
 
 from FifthFunctions.collecting_info import transcript_fetcher
@@ -39,14 +38,7 @@ def launcherSubtitles():
             log(history, "OSError occurred", error=str(exc))
             return
         
-        except VideoUnplayable:
-
-            input("\n\u001b[31mThe video is unplayable\u001b[0m\n\nPress Enter to return...")
-            log(history, "VIDEO_UNPLAYABLE")
-
-            return
-        
-        except RequestBlocked:
+        except YouTubeRequestFailed:
 
             input("\n\u001b[31mYouTube is blocking requests from your IP\u001b[0m\n\nPress Enter to return...")
             log(history, "REQUEST_BLOCKED")
