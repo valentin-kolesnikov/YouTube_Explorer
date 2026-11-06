@@ -6,6 +6,7 @@ from Patterns.errors import PatternError, WinError, http_error
 def collect_searches(youtube, keywords, region, ageAfter, ageBefore, duration, maximum, which_order, dimension):
     video_ids = []
     next_page_token = None
+    error = None
 
     while len(video_ids) < maximum:
         remaining_results = maximum - len(video_ids)

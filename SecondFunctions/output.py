@@ -19,10 +19,10 @@ def output_videos(results, statrequest, keywords=None, one_video_info=False):
         UTC = dt.strftime("%z")
         formatted_date = dt.strftime("%d.%m.%Y %H:%M:%S") + f" (UTC{UTC[:3]}:{UTC[3:]})"
 
-        likes = item["statistics"].get("likeCount", "No")
-        dislikes = results.get(video_id, {}).get("dislikes", "No")
-        views = item["statistics"].get("viewCount", "No")
-        comments = item["statistics"].get("commentCount", "No")
+        likes = item["statistics"].get("likeCount", "N/A")
+        dislikes = results.get(video_id, {}).get("dislikes", "N/A")
+        views = item["statistics"].get("viewCount", "N/A")
+        comments = item["statistics"].get("commentCount", "N/A")
 
         channelName = item["snippet"]["channelTitle"]
         channelId = item["snippet"]["channelId"]
